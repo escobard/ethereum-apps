@@ -23,6 +23,9 @@ $ installation instructions to come...
 
 More usage instructions on this application coming in the future.
 
+- web3.js
+- (metamask.io)[https://metamask.io/]
+
 ## Application breakdown
 
 To be expanded in the future...
