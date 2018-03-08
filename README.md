@@ -16,8 +16,12 @@ $ git clone https://github.com/escobard/ethereum-apps.git
 
 To run the tests, ensure that your application is connected a MongoDB instance (expand on that later, instructions on local usage below):
 ```
-$ installation instructions to come...
+$ installation instructions found within each application's folder
 ```
+
+## Notes on blockchain & other theory:
+
+- [Notes](https://github.com/escobard/ethereum-apps/wiki/Notes)
 
 ## Optional libraries
 

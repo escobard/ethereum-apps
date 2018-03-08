@@ -47,12 +47,15 @@
 					- it then compiles the list of transactions into a block:
 						- this block is then validated, and it goes through a long process.
 							- this is the process known as MINING - the calculations taken to validate the block, are how users MINE a crypto currency. 
+	6) Once transaction is confirmed, it sends the transaction data to the corresponding users
 
 ### From BASIC BLOCKCHAIN tutorial - This entire process can be shown here: https://anders.com/blockchain/block.html
 
 - SHA256 Hash:
 	- looks like a bunch of random numbers
-	- fingerprints of whatever you type, a tiny amount or a huge amount, you will always receive a hash that is exactly that long
+	- fingerprints of whatever you type, a tiny amount or a huge amount, you will always receive a hash that is exactly 64 characters long
+	- a HASH is an encrypted piece of data, could be as small as a single character, or as larger as the constitution of the united states.
+	- no matter what though, the RETURNED piece of data, or the hash number, is always 64 characters long. 
 
 - In comparison to a BLOCK:
 	- a block is a SHA256 encrypted piece of data.
@@ -61,7 +64,8 @@
 		- Nounce: how many transactions sent 
 		- Data: whatever data the block contains, in most cases these are user transactions
 	- mining is essentialyl encrypting the block with calculations to encrypt the data the block contains.
-	- once a block has been MINED the hash of the block starts with 0000 or FOUR ZEROES which indicates it has been SIGNED
+	- once a block has been MINED the hash of the block starts with 0000-1000 which indicates it has been SIGNED
+	- we refer to the amount of time it takes to HASH (SIGN / ENCRYPT) the BLOCK as BLOCK TIME
 
 - In comparison to BLOCKCHAIN:
 	- contains a number of SIGNED blocks
@@ -82,3 +86,25 @@
 - With COINBASES TRANSACTIONS:
 	- Essentially the balance is kept by the COINBASE DASHBOARD, maintaining a BALANCE for the user, and ensuring that the BALANCE can never go negative.
 	- the COINBASE BALANCE is added as an additional property to the TRANSACTION OBJECT, for each transaction made by the user.
+
+- BLOCK TIME:
+	- The ammount of time it takes to HASH / Calculate the encryption on any given block:
+	- Here is how the HASH is calculated:
+		- you can copy the hash, and paste it in a browser console
+		- place a 0x (instructs JS that this is a hash)
+		- once enter is pressed, a number is generated - in essence the hash is a number.
+		- So to re-iterate:
+			- The hash takes data + nonce to output the hash.
+			- The hash is then converted to a base 10 number.
+			- The hash this number then needs to be LESS than a target number, say 1000.
+			- The hash iterates the data until the target solution is found.
+			- This returns the VALUE of the hash, which can be between 0000-1000.
+			- The number is determined by the blockchain proof of work algo. which selects a target number.
+
+### DIFFERENCES WITH BASIC BLOCKCHAIN AND ETHEREUM
+
+- BLOCK TIME for ETHEREUM:
+	- target block time is 15 seconds for the ether network, but in reality this is a variable factor:
+		- for example, if a HASH with a HIGH target number will take longer, so if the PREVIOUS block hash has a HIGH target number, the next hash will contain a LOWER target number which is easier to solve.
+		- Then an additional set of time is taken distributing the solution (or the new block in the blockchain) to other nodes.
+		- To check avarage block times for Ether, we can check: https://etherscan.io/chart/blocktime
