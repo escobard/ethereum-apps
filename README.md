@@ -9,10 +9,10 @@ In addition, this repository contains all of my own programming files, notes, ap
 To install and run this locally on your computer, you will need a local web to open the files in this repository with a text editor, or preview them on a browser.
 
 You may also clone this locally to your computer, using the following line of code:
+
 ```
 $ git clone https://github.com/escobard/ethereum-apps.git
 ```
-
 
 To run the tests, ensure that your application is connected a MongoDB instance (expand on that later, instructions on local usage below):
 ```
