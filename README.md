@@ -19,7 +19,7 @@ To run the tests, ensure that your application is connected a MongoDB instance (
 $ installation instructions found within each application's folder
 ```
 
-## Notes on blockchain & other theory:
+## Notes on blockchain, ethereum, smart contracts, solidity & other theory:
 
 - [Notes](https://github.com/escobard/ethereum-apps/wiki/Notes)
 

@@ -1,5 +1,7 @@
 ## ETHER BASICS
 
+**_These notes may not be 100% accurate yet, and will be updated as my understanding of the tech. stack grows_**
+
 ### NETWORKS
 
 - Every network contains nodes, which a are managed by one or many users
@@ -29,7 +31,7 @@
 		+  What is a transaction object?
 			+ record that describes one account attempting to send money to another account
 			+ this is then sent to the ether network to be processed
-				= each transaction has the following properties:
+				- each transaction has the following properties:
 					- nonce: this number states how many times a SENDER has sent a transaction.
 					- to: address of the account, where this money is being sent to
 					- value: the ammount of ehter to send to the target address defined in the to property
@@ -59,32 +61,32 @@
 
 - In comparison to a BLOCK:
 	- a block is a SHA256 encrypted piece of data.
-	- it contains:
+	- the block's DATA contains the following properties:
 		- Block #
 		- Nounce: how many transactions sent 
 		- Data: whatever data the block contains, in most cases these are user transactions
-	- mining is essentialyl encrypting the block with calculations to encrypt the data the block contains.
+	- mining is essentially encrypting the block with calculations to encrypt the data the block contains.
 	- once a block has been MINED the hash of the block starts with 0000-1000 which indicates it has been SIGNED
 	- we refer to the amount of time it takes to HASH (SIGN / ENCRYPT) the BLOCK as BLOCK TIME
 
 - In comparison to BLOCKCHAIN:
 	- contains a number of SIGNED blocks
 	- each block in the chain contains the HASH of the previous and current blocks in the blockchain
-	- this essentially forms a blockchain, a bunch of blocks containing data, with 2 hashes representing prev / current block in the chain.
+	- this essentially forms a blockchain, a bunch of blocks containing data, with 2 hashes in each block, representing prev / current block in the chain.
 	- if the data in any block changes, it INVALIDATES that block and ANY blocks after it.
 	- this is how blockchains are SECURE, since tampering of ANY data in the chain changes the HASH, it can be immediately discerned where the data was manipulated by comparing the BLOCKCHAIN to other BLOCKCHAINS in the DISTRIBUTED BLOCKCHAIN NETWORK.
 
 - In comparison to DISTRIBUTED BLOCKCHAIN:
 	-  a DISTRIBUTED BLOCKCHAIN is a network with several NODES, each NODE contains an exact copy of the blockchain.
 	- in this scenario, each BLOCKCHAIN copy is tested to make sure all the hashes match across the board, further validating the blockchain.
-	- this ENSURES that the MONEY sent in each transaction is NOT changes, and if it is its immediately discernable. This is the entire purpose of blockchains, to create a safe medium to secure transactions
+	- this ENSURES that the CURRENCY VALUE sent in each transaction is NOT changed, and if it does, its immediately discernable. This is the entire purpose of blockchains, to create a safe medium to secure transactions.
 
 - Each BLOCK contains BLOCK DATA or a list of TRANSACTIONS:
-	- The DATA within each BLOCK is multiple TRANSACTION OBJECTS - which are then MINED to get SIGNED, and added to a BLOCKCHAIN
-	- remember that this is only remembering money movements, not balances
+	- The DATA within each BLOCK is multiple TRANSACTION OBJECTS - which are then MINED to get SIGNED, and then added to the BLOCKCHAIN
+	- basic block data contains only transaction objects, not balances which are handled by COINBASE blockchains.
 
 - With COINBASES TRANSACTIONS:
-	- Essentially the balance is kept by the COINBASE DASHBOARD, maintaining a BALANCE for the user, and ensuring that the BALANCE can never go negative.
+	- Essentially the balance is kept by the COINBASE BLOCKCHAINS (TRADING DASHBOARD), maintaining a BALANCE property for the user, and ensuring that the BALANCE can never go negative.
 	- the COINBASE BALANCE is added as an additional property to the TRANSACTION OBJECT, for each transaction made by the user.
 
 - BLOCK TIME:
@@ -94,12 +96,13 @@
 		- place a 0x (instructs JS that this is a hash)
 		- once enter is pressed, a number is generated - in essence the hash is a number.
 		- So to re-iterate:
-			- The hash takes data + nonce to output the hash.
+			- The hash takes data + other block properties to output the hash.
 			- The hash is then converted to a base 10 number.
 			- The hash this number then needs to be LESS than a target number, say 1000.
 			- The hash iterates the data until the target solution is found.
 			- This returns the VALUE of the hash, which can be between 0000-1000.
 			- The number is determined by the blockchain proof of work algo. which selects a target number.
+			- Once a solution has been determined, the block is considered as SIGNED, and added to the block chain.
 
 ### DIFFERENCES WITH BASIC BLOCKCHAIN AND ETHEREUM
 
@@ -125,13 +128,14 @@
 	- contract production process:
 		1) create the contract locally - creates a CLASS
 		2) deploy it to the specific network.
-		3) creates an instance of smart contract within the network - or an INSTANCE of that class. 
+		3) creates an instance of smart contract within the network - or an INSTANCE of that CLASS. 
 
 ### SOLIDITY:
 
 - Used to develop smart contracts
 - strongly typed language
 - similar to javascript, with some big GOTCHA'S that will be explored later
+- Basic syntax breakdown here: [https://github.com/escobard/ethereum-apps/blob/master/smart-contracts-basics/scontract_1.sol](https://github.com/escobard/ethereum-apps/blob/master/smart-contracts-basics/scontract_1.sol)
 - Contract process with solidity:
 	- Solidity contract definition (code needed for the contract to work)
 	- Solidity compiler compiles the code into two seperate files:
@@ -141,3 +145,19 @@
 			- The ABI is used to interface the Byte code used for the smart constract, to visually show data from the contract.
 - we can use the remix online application to debug solidity code while writing it - remix.ethereum.org
 
+### REMIX: remix.ethereum.org
+
+- IDE for solidity, can test / compile smart contracts live.
+	- REMIX is powered by a testing ETHEREUM network.
+	- in the RUN tab, we can change the following network properties:
+		- Environment: can choose the environment that we want.
+		- Account: Creates accounts automatically created for testing purposes.
+			+ has multiple accounts with 100 ether - makes testing contracts really easy
+		- Gas limit: will return to this concept later.
+		- Value: sets the value of the currency that we want.
+		- SUPER AWESOME - THE CONTRACT FUNCTION UI:
+			- This area of the IDE shows the functions within your contract.
+			- We can create an INSTANCE of our smart contract CLASS here.
+			- This allows us to test returned data, by analysing the INSTANCES created on the test network.
+			- We can also test the function callbacks to retreive data from the smart contract.
+			- We can also check the TRANSACTION OBJECT with each instance, by clicking on the details button within the console.
