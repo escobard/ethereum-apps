@@ -108,3 +108,35 @@
 		- for example, if a HASH with a HIGH target number will take longer, so if the PREVIOUS block hash has a HIGH target number, the next hash will contain a LOWER target number which is easier to solve.
 		- Then an additional set of time is taken distributing the solution (or the new block in the blockchain) to other nodes.
 		- To check avarage block times for Ether, we can check: https://etherscan.io/chart/blocktime
+
+### SMART CONTRACTS:
+
+- Think of a Smart contract as an account, like the one created on MetaMask.
+- Instead of being controlled by a human being however, this is controlled by some ammount of code.
+	- This creates a behavioral pattern for the smart contract, to handle a transaction in a specific way.
+- Smart Contract accounts contain the following additional properties:
+	- balance: ammount of ether this account owns.
+	- storage: data storage for this contract.
+	- code: raw machine code for this contract.
+- Accounts created via metamask, are refered to as EXTERNAL ACCOUNTS
+- Acounts created for smart contracts, are called CONTRACT ACCOUNTS.
+	- Unlike EXTERNAL ACCOUNTS, CONTRACT ACCOUNTS are NETWORK SPECIFIC.
+	- In other words, contracts that work for the Rinkeby network will not work for the Kovan network, until re-deployed.
+	- contract production process:
+		1) create the contract locally - creates a CLASS
+		2) deploy it to the specific network.
+		3) creates an instance of smart contract within the network - or an INSTANCE of that class. 
+
+### SOLIDITY:
+
+- Used to develop smart contracts
+- strongly typed language
+- similar to javascript, with some big GOTCHA'S that will be explored later
+- Contract process with solidity:
+	- Solidity contract definition (code needed for the contract to work)
+	- Solidity compiler compiles the code into two seperate files:
+		- Byte code ready for deployment to network.
+		- Application Binary Interface (ABI):
+			- Key to write applications that utilize smart contracts.
+			- The ABI is used to interface the Byte code used for the smart constract, to visually show data from the contract.
+
