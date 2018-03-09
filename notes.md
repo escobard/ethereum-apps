@@ -34,7 +34,7 @@
 				- each transaction has the following properties:
 					- nonce: this number states how many times a SENDER has sent a transaction.
 					- to: address of the account, where this money is being sent to
-					- value: the ammount of ehter to send to the target address defined in the to property
+					- value: the ammount of ether to send to the target address defined in the to property
 					- gasPrice: ammount of ether the sender is willing to pay per unit gas to get this transaction processed.
 					- startGas/gasLimit: unit of gas that this transaction can consume
 					- VRS: cryptographic pieces of data that can be used to generate the senders account address - generated from the senders private key.
@@ -129,6 +129,25 @@
 		1) create the contract locally - creates a CLASS
 		2) deploy it to the specific network.
 		3) creates an instance of smart contract within the network - or an INSTANCE of that CLASS. 
+		4) the instance can then be manipulated with the CALLBACK FUNCTIONS within the CLASS.
+		5) the contract then lives on the NETWORK continuing to handle TRANSACTIONS - all logical code is exposed to the world, so no secret data should be deployed with any smart contract.
+
+### CONTRACT ACCOUNTS && EXTERNAL ACCOUNT RELATIONSHIP:
+
+- Transaction process is as follows:
+	1) User creates an account / logs into account.
+	2) This account creates a TRANSACTION REQUEST, which is handled by the CONTRACT ACCOUNT (SMART CONTRACT)
+	3) The CONTRACT ACCOUNT handles the TRANSACTION OBJECT, manipulating the data as instructed by its logic.
+	4) The CONTRACT serves two purposes:
+		- it stores the TRANSACTION OBJECT within a BLOCK for later storage into a BLOCKCHAIN.
+		- it manipulates the TRANSACTION OBJECT returning logic which returns something to the receiving users's account.
+		- with a contract transaction (no currency), data is returned to the receiving user, and the VALUE property can be filled with currency, which returns a currency value to the receiving user.
+		- within a currency transaction, the VALUE of the transaction is DEDUCTED from the contract creator's account, and ADDED to the receiving user's account.
+- differences between contract transactions (no money) vs currency transactions are:
+	- the to property is null / undefined within contract transactions.
+	- contains the data property: compiled bytecode of the contract.
+	- the value property is irrelevant, since no currency is being sent.
+
 
 ### SOLIDITY:
 
