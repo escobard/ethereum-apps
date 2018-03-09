@@ -12,7 +12,9 @@
 	6) Below, we can see an INSTANCE of the contract CLASS created.
 	7) Clicking on either the message or get message buttons displays the string set in step 4.
 	8) Within the console (gray area) we can view the transaction object.
-	9) Have fun!
+	9) Setting a new message within the setMessage field of an INSTANCE updates the message value.
+	10) To retreive the new message value from the INSTANCE, we click on the getMessage or message buttons.
+	11) Have fun!
 */
 
 // IDE for solidity here: http://remix.ethereum.org/#optimize=false&version=soljson-v0.4.21+commit.dfe3193c.js
@@ -29,9 +31,15 @@ contract Inbox{
 	// STRING represents the data type, in this case string
 	// PUBLIC represents the data permissions, in this case public
 	// MESSAGE replresents the data identifier, in this gase message
+	// string public message;
+
 
 	// this is called a storage variable - sort of like an instance variable
 	// exists for the life of the contract 0 
+
+	// within solidity, declaring a VARIABLE as PUBLIC will automatically create a new FUNCTION
+	// with the name of the VARIABLE, which when invoked, returns the VARIABLE VALUE
+	// that means that to retreive simple data, we don't need the more complex getMessage() function
 	string public message;
 
 
@@ -63,7 +71,9 @@ contract Inbox{
 
 	// breaking down returning functions by pieces as follows:
 	// this is the function name, but this function accepts no arguments
-	function getMessage() 
+	// since the data we are retreiving is so simple, the getMessage() function can be scrapped.
+	// refer to lines 40-43 on public variable declarations with Solidity
+	// function getMessage() 
 
 	// this is the function type, which determines the permissions for the function including:
 	// can only use one - public or private:
@@ -74,10 +84,10 @@ contract Inbox{
 		// constant: this function returns data and does NOT modify the contract's data
 	// pure: function will not mofidy or even read the contract's data.
 	// payable: when someone calls this function, they might send ether along - this is the function type we will be using the most
-	public view 
+	// public view 
 
 	// this specifies that the function is meant to return a value, specified by the data type.
-	returns (string){
-		return message;
-	}
+	// returns (string){
+		//return message;
+	// }
 }

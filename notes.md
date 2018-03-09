@@ -143,6 +143,7 @@
 		- Application Binary Interface (ABI):
 			- Key to write applications that utilize smart contracts.
 			- The ABI is used to interface the Byte code used for the smart constract, to visually show data from the contract.
+- changing base smart contract machine code does NOT change already existing INSTANCES of the CLASS
 - we can use the remix online application to debug solidity code while writing it - remix.ethereum.org
 
 ### REMIX: remix.ethereum.org
