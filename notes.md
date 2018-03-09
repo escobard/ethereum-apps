@@ -2,54 +2,6 @@
 
 **_These notes may not be 100% accurate yet, and will be updated as my understanding of the tech. stack grows_**
 
-### NETWORKS
-
-- Every network contains nodes, which a are managed by one or many users
-- There can be many networks, but there is only one main network which is where real monitery transactions take place
-
-### ETHER ACCOUNTS
-
-- Every account contains the following identifying pieces of data:
-	+ account address: like an email, which can be shared with anyone in the world to identify your account 	- this can be copied from metamask
-		- a single account can be used for any other network:
-		- multiple accounts can be created quite easily
-	+ public key: this and the private key are used to authorize the sending and receiving of transactions to your account
-		- the public key is used to receive transactions
-	+ private key:
-		- the private key is used to send transactions - VERY IMPORTANT TO KEEP PRIVATE KEY SECRET
-
-### TRANSACTIONS
-
-- Sending ether tokens from one account to another
-	- requires the user account to receive tokens
-- takes some ammount of time
-- tokens within test networks are worthless, and only used for testing purposes
-- breakdown of a transaction:
-	1) submit on the form
-	2) address / account sent to backend server
-	3) backend server used web3 library to create a 'transaction' object
-		+  What is a transaction object?
-			+ record that describes one account attempting to send money to another account
-			+ this is then sent to the ether network to be processed
-				- each transaction has the following properties:
-					- nonce: this number states how many times a SENDER has sent a transaction.
-					- to: address of the account, where this money is being sent to
-					- value: the ammount of ether to send to the target address defined in the to property
-					- gasPrice: ammount of ether the sender is willing to pay per unit gas to get this transaction processed.
-					- startGas/gasLimit: unit of gas that this transaction can consume
-					- VRS: cryptographic pieces of data that can be used to generate the senders account address - generated from the senders private key.
-	4) backend server sent transaction object to the ether network, (in our case the rinkeyby test network for now) 
-	5) backend server waits for transaction to be confirmed:
-		+ Why did we wait?
-			- cryptocurrency creators knew they had to create a system robust enough to handle billions or trillions of dollars of value being transfered between people every day - this is the answer to why transaction handling is so complex and necessary to the crypto(eco)system.
-			- transaction handling by the ether network:
-				1) transaction enters the network, connecting to a specific NODE which is connected to the specific network.
-				2) the NODE contains an entire copy of the blockchain(for now, a blockchain is described simply as a database) and receives your transaction
-					- the node can process multiple transactions at once
-					- it then compiles the list of transactions into a block:
-						- this block is then validated, and it goes through a long process.
-							- this is the process known as MINING - the calculations taken to validate the block, are how users MINE a crypto currency. 
-	6) Once transaction is confirmed, it sends the transaction data to the corresponding users
 
 ### From BASIC BLOCKCHAIN tutorial - This entire process can be shown here: https://anders.com/blockchain/block.html
 
@@ -112,6 +64,56 @@
 		- Then an additional set of time is taken distributing the solution (or the new block in the blockchain) to other nodes.
 		- To check avarage block times for Ether, we can check: https://etherscan.io/chart/blocktime
 
+### NETWORKS
+
+- Every network contains nodes, which a are managed by one or many users
+- There can be many networks, but there is only one main network which is where real monitery transactions take place
+
+### ETHER ACCOUNTS
+
+- Every account contains the following identifying pieces of data:
+	+ account address: like an email, which can be shared with anyone in the world to identify your account 	- this can be copied from metamask
+		- a single account can be used for any other network:
+		- multiple accounts can be created quite easily
+	+ public key: this and the private key are used to authorize the sending and receiving of transactions to your account
+		- the public key is used to receive transactions
+	+ private key:
+		- the private key is used to send transactions - VERY IMPORTANT TO KEEP PRIVATE KEY SECRET
+
+### TRANSACTIONS
+
+- Sending ether tokens from one account to another
+	- requires the user account to receive tokens
+- takes some ammount of time
+- tokens within test networks are worthless, and only used for testing purposes
+- breakdown of a transaction:
+	1) submit on the form
+	2) address / account sent to backend server
+	3) backend server used web3 library to create a 'transaction' object
+		+  What is a transaction object?
+			+ record that describes one account attempting to send money to another account
+			+ this is then sent to the ether network to be processed
+				- each transaction has the following properties:
+					- nonce: this number states how many times a SENDER has sent a transaction.
+					- to: address of the account, where this money is being sent to
+					- value: the ammount of ether to send to the target address defined in the to property
+					- gasPrice: ammount of ether the sender is willing to pay per unit gas to get this transaction processed.
+					- startGas/gasLimit: unit of gas that this transaction can consume
+					- VRS: cryptographic pieces of data that can be used to generate the senders account address - generated from the senders private key.
+	4) backend server sent transaction object to the ether network, (in our case the rinkeyby test network for now) 
+	5) backend server waits for transaction to be confirmed:
+		+ Why did we wait?
+			- cryptocurrency creators knew they had to create a system robust enough to handle billions or trillions of dollars of value being transfered between people every day - this is the answer to why transaction handling is so complex and necessary to the crypto(eco)system.
+			- transaction handling by the ether network:
+				1) transaction enters the network, connecting to a specific NODE which is connected to the specific network.
+				2) the NODE contains an entire copy of the blockchain(for now, a blockchain is described simply as a database) and receives your transaction
+					- the node can process multiple transactions at once
+					- it then compiles the list of transactions into a block:
+						- this block is then validated, and it goes through a long process.
+							- this is the process known as MINING - the calculations taken to validate the block, are how users MINE a crypto currency. 
+	6) Once transaction is confirmed, it sends the transaction data to the corresponding users
+- A rule that will ALWAYS hold true within this ecosystem is that to update any data on the blockchain, we have to submit a transaction request.
+
 ### SMART CONTRACTS:
 
 - Think of a Smart contract as an account, like the one created on MetaMask.
@@ -131,6 +133,20 @@
 		3) creates an instance of smart contract within the network - or an INSTANCE of that CLASS. 
 		4) the instance can then be manipulated with the CALLBACK FUNCTIONS within the CLASS.
 		5) the contract then lives on the NETWORK continuing to handle TRANSACTIONS - all logical code is exposed to the world, so no secret data should be deployed with any smart contract.
+- Different ways to run functions on our contracts:
+	- call - a function like message within scontract_1, does not create a transaction since this function only RETREIVES data from an INSTANCE - instantenous, free, not complication.
+		- important points:
+			1) cannot modify data.
+			2) can return data.
+			3) runs instantly
+			4) is free
+	- modify / transact - these types of functions modify any data within the instance, creating a transaction request.
+		- important points to remember:
+			1) Returning data takes time to execute - takes a while to validate the blockchain.
+			2) can modify a contracts data.
+			3) takes time to execute - way more on public networks, on any test networks like REMIX transactions are almost immediate. This is why we will build applications EXPECTING the delay.
+			4) returns the transaction proof of work hash.
+			5) costs money - more on this in another unit but essentially any TRANSACTION costs a certain ammount.
 
 ### CONTRACT ACCOUNTS && EXTERNAL ACCOUNT RELATIONSHIP:
 
