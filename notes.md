@@ -96,7 +96,9 @@
 				- each transaction has the following properties:
 					- nonce: this number states how many times a SENDER has sent a transaction.
 					- to: address of the account, where this money is being sent to
-					- value: the ammount of ether to send to the target address defined in the to property
+					- value: the ammount of ether to send to the target address defined in the to property.
+						+ think of the difference between currencies as a unit of measurement.
+						+ bitcoin is 1 dollar bills, either is 100 cents (as an example), etc.
 					- gasPrice: ammount of ether the sender is willing to pay per unit gas to get this transaction processed.
 					- startGas/gasLimit: unit of gas that this transaction can consume
 					- VRS: cryptographic pieces of data that can be used to generate the senders account address - generated from the senders private key.
@@ -113,6 +115,18 @@
 							- this is the process known as MINING - the calculations taken to validate the block, are how users MINE a crypto currency. 
 	6) Once transaction is confirmed, it sends the transaction data to the corresponding users
 - A rule that will ALWAYS hold true within this ecosystem is that to update any data on the blockchain, we have to submit a transaction request.
+
+### UNITS:
+
+	- think of the difference between currencies as a unit of measurement.
+	- bitcoin is 1 dollar bills, either is 100 cents (as an example), etc.
+	- wei: a small unit of ether - 1 ether == 1,000,000,000,000,000,000 wei - can't have fractional units of wei.
+	- etherconverter.online - a calculator for ether units of measurement.
+	- mostly we will be working with wei and ether.
+
+### GAS:
+
+- 
 
 ### SMART CONTRACTS:
 
