@@ -308,3 +308,16 @@
 		- unlocked accounts to not need a private or public key to send / receive transactions.
 		- mostly encountered in testing environments
 	- which returns a response back to web3, which we then use within our application
+- We can use Web3 to create new contracts, or manipulate existing contracts
+- We can use 3 different websocket providers for web3 nodes:
+	- websocketprovider,
+	- httpprovider,
+	- ipcprovider - whenever you're using your same machine (local connections) this is what we use
+- The methods property are functions that are tied to our contract.
+	- in our case, we see the setMessage and message functions. 
+- The options property contains information about the contract deployed including:
+	- jsoninterface,
+	- data,
+	- from, 
+	- gasPrice, 
+	- gas

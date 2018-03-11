@@ -33,13 +33,27 @@ beforeEach(async () =>{
 	// use one of those accounts to deploy the contract
 
 	// this creates an instance of a contract
-	inbox = await new web3.eth.Contract(
+	// we can call functions on this object to interact directly with the existing 
+	// blockchain contract
+	inbox = await new web3
+
+		// defines our network, as web3 can connect to many other crypto networks
+		// for these projects, we want etherium specifically
+		.eth
+
+		// allows us to interact with existing contracts on the blockchain, or
+		// to create and deploy new contracts
+		.Contract(
 
 		// this returns the interface (ABI) as a json for us to use within our js app
+		// the first argument of the .Contract() callback is always the ABI
 		JSON.parse(interface))
 
-			// deploys this to our ether network as a contract
-			.deploy({
+			// creates a transaction object, does not actually deploy yet, just prepares the
+			// transaction object
+			.deploy(
+
+				{
 
 				// this is the bytecode that consists of the contract.
 				data: bytecode,
@@ -48,6 +62,8 @@ beforeEach(async () =>{
 				// that the Inbox() constructor function expects on /contracts/Inbox.sol
 				arguments:['Hi There!']
 			})
+
+			// this actually sends the contract to the network
 			.send({ 
 
 				// the account that this is being sent from - in this case the first account created by
@@ -63,6 +79,9 @@ beforeEach(async () =>{
 describe('Inbox', () =>{
 	it('deploys a contract', () =>{
 		console.log('accounts', accounts)
+		
+		//The methods property are functions that are tied to our contract.
+		// in our case, we see the setMessage and message functions. 
 		console.log('inbox', inbox)
 
 	})
