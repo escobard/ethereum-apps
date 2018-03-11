@@ -23,12 +23,14 @@ $ installation instructions found within each application's folder
 
 - [Notes](https://github.com/escobard/ethereum-apps/wiki/Notes)
 
-## Optional libraries
+## Libraries & tools
 
 More usage instructions on this application coming in the future.
 
-- web3.js
 - (metamask.io)[https://metamask.io/]
+- (remix)[https://remix.ethereum.org]
+- (rinkby fawcet)(https://faucet.rinkeby.io/)
+- web3.js
 
 ## Application breakdown
 

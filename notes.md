@@ -1,4 +1,4 @@
-## ETHER BASICS
+## ETHER BASICS - V0.1
 
 **_These notes may not be 100% accurate yet, and will be updated as my understanding of the tech. stack grows_**
 
@@ -264,3 +264,60 @@
 			- This allows us to test returned data, by analysing the INSTANCES created on the test network.
 			- We can also test the function callbacks to retreive data from the smart contract.
 			- We can also check the TRANSACTION OBJECT with each instance, by clicking on the details button within the console.
+
+## CONTRACT DEPLOYMENT - V0.2
+
+- How do we deploy our contract to the network?
+	- Several options- but all have the following problems:
+		- Undergoing rapid development
+		- Some things don't work well
+		- Some things don't work at all
+		- Stuff breaks - patience is required
+		- Truffle - most popular:
+			- One stop shop for development of etherium contracts, boilerplate contains:
+				- contract creation
+				- local testing
+				- deployment
+	- To solve this problem, we are going to create our own custom node boilerplate to allow:
+		- contract creation - set up solidity compiler to build our contracts.
+			- this allows us to generate the BYTE code necessary to deploy, and the code necessary to interact on the front end with JS
+		- local testing - set up mocha tester runner to test solidity code.
+		- deployment - set up deploy script to compile + deploy our contract.
+
+### LOCAL TESTING:
+
+- We are going to create a local ethereum network for testing with Ganache/TestRPC
+	- this tests contract deployment instances, and functionality
+		- For windows, users need to install the following global dependency:
+			`npm install --global --production windows-build-tools`
+- We will be using the ganache test ether network to deploy our tests 
+
+### WEB3
+
+- This is the absolute solution to access ethereum networks with javascript applications
+- version issues:
+	- v0.x.x:
+		- Primitive interface, only callbacks for async code
+		- most stackoverflow posts use the earlier versions of the API
+	- v1.x.x:
+		- support for promises + async/await
+		- we are using v1
+- A provider must be set up with web3 to communicate with an ethereum network.
+	- this allows us to send a request to the network (in v0.2's case, the ganache test network)
+		- ganache creates accounts automatically for us, and they are unlocked accounts.
+		- unlocked accounts to not need a private or public key to send / receive transactions.
+		- mostly encountered in testing environments
+	- which returns a response back to web3, which we then use within our application
+- We can use Web3 to create new contracts, or manipulate existing contracts
+- We can use 3 different websocket providers for web3 nodes:
+	- websocketprovider,
+	- httpprovider,
+	- ipcprovider - whenever you're using your same machine (local connections) this is what we use
+- The methods property are functions that are tied to our contract.
+	- in our case, we see the setMessage and message functions. 
+- The options property contains information about the contract deployed including:
+	- jsoninterface,
+	- data,
+	- from, 
+	- gasPrice, 
+	- gas
