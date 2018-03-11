@@ -283,3 +283,24 @@
 			- this allows us to generate the BYTE code necessary to deploy, and the code necessary to interact on the front end with JS
 		- local testing - set up mocha tester runner to test solidity code.
 		- deployment - set up deploy script to compile + deploy our contract.
+
+### LOCAL TESTING:
+
+- We are going to create a local ethereum network for testing with Ganache/TestRPC
+	- this tests contract deployment instances, and functionality
+		- For windows, users need to install the following global dependency:
+			`npm install --global --production windows-build-tools`
+
+### WEB3
+
+- This is the absolute solution to access ethereum networks with javascript applications
+- version issues:
+	- v0.x.x:
+		- Primitive interface, only callbacks for async code
+		- most stackoverflow posts use the earlier versions of the API
+	- v1.x.x:
+		- support for promises + async/await
+		- we are using v1
+- A provider must be set up with web3 to communicate with an ethereum network.
+	- this allows us to send a request to the network (in v0.2's case, the ganache test network)
+	- which returns a response back to web3, which we then use within our application
