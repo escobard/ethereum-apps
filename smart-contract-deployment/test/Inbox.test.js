@@ -78,11 +78,17 @@ beforeEach(async () =>{
 
 describe('Inbox', () =>{
 	it('deploys a contract', () =>{
-		console.log('accounts', accounts)
-		
 		//The methods property are functions that are tied to our contract.
 		// in our case, we see the setMessage and message functions. 
-		console.log('inbox', inbox)
+		// more on properties here on the notes.md file, ## WEB3 section
+		console.log('inbox address', inbox.options.address)
+		console.log('inbox methods', inbox.methods)
+		// this is a new property of the assert method
+		assert
+
+		// this checks to see if the argument is a truthy value, or in other words 
+		// if it exists
+		.ok(inbox.options.address)
 
 	})
 })
