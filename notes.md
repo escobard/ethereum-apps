@@ -17,8 +17,8 @@
 		- Block #
 		- Nounce: how many transactions sent 
 		- Data: whatever data the block contains, in most cases these are user transactions
-	- mining is essentially encrypting the block with calculations to encrypt the data the block contains.
-	- once a block has been MINED the hash of the block starts with 0000-1000 which indicates it has been SIGNED
+	- mining is essentially encrypting the block with calculations to called a proof of service which adds the block to a blockchain.
+	- once a block has been MINED the hash of the block starts with 0000-1000 which indicates it has been SIGNED by the proof of service algorythm.
 	- we refer to the amount of time it takes to HASH (SIGN / ENCRYPT) the BLOCK as BLOCK TIME
 
 - In comparison to BLOCKCHAIN:
@@ -26,15 +26,14 @@
 	- each block in the chain contains the HASH of the previous and current blocks in the blockchain
 	- this essentially forms a blockchain, a bunch of blocks containing data, with 2 hashes in each block, representing prev / current block in the chain.
 	- if the data in any block changes, it INVALIDATES that block and ANY blocks after it.
-	- this is how blockchains are SECURE, since tampering of ANY data in the chain changes the HASH, it can be immediately discerned where the data was manipulated by comparing the BLOCKCHAIN to other BLOCKCHAINS in the DISTRIBUTED BLOCKCHAIN NETWORK.
+	- this is how blockchains are SECURE, since tampering of ANY data in the chain changes the HASH, it can be immediately discerned where the data was manipulated by comparing the BLOCKCHAIN to other BLOCKCHAINS in the NODES within the DISTRIBUTED BLOCKCHAIN NETWORK.
 
 - In comparison to DISTRIBUTED BLOCKCHAIN:
-	-  a DISTRIBUTED BLOCKCHAIN is a network with several NODES, each NODE contains an exact copy of the blockchain.
+	- a DISTRIBUTED BLOCKCHAIN is a network with several NODES, each NODE contains an exact copy of the blockchain.
 	- in this scenario, each BLOCKCHAIN copy is tested to make sure all the hashes match across the board, further validating the blockchain.
-	- this ENSURES that the CURRENCY VALUE sent in each transaction is NOT changed, and if it does, its immediately discernable. This is the entire purpose of blockchains, to create a safe medium to secure transactions.
 
 - Each BLOCK contains BLOCK DATA or a list of TRANSACTIONS:
-	- The DATA within each BLOCK is multiple TRANSACTION OBJECTS - which are then MINED to get SIGNED, and then added to the BLOCKCHAIN
+	- The DATA within each BLOCK is usually multiple TRANSACTION OBJECTS - which are then MINED to get SIGNED by the proof of work algorythm, and then added to the BLOCKCHAIN
 	- basic block data contains only transaction objects, not balances which are handled by COINBASE blockchains.
 
 - With COINBASES TRANSACTIONS:
@@ -55,6 +54,7 @@
 			- This returns the VALUE of the hash, which can be between 0000-1000.
 			- The number is determined by the blockchain proof of work algo. which selects a target number.
 			- Once a solution has been determined, the block is considered as SIGNED, and added to the block chain.
+			- This is in a nutshell how ethereium proof of work signed blocks work.
 
 ### DIFFERENCES WITH BASIC BLOCKCHAIN AND ETHEREUM
 
@@ -66,13 +66,13 @@
 
 ### NETWORKS
 
-- Every network contains nodes, which a are managed by one or many users
-- There can be many networks, but there is only one main network which is where real monitery transactions take place
+- Every network contains nodes, which a are managed by one or many users.
+- There can be many networks, but there is only one main network which is where real monitery transactions take place.
 
 ### ETHER ACCOUNTS
 
 - Every account contains the following identifying pieces of data:
-	+ account address: like an email, which can be shared with anyone in the world to identify your account 	- this can be copied from metamask
+	+ account address: like an email, which can be shared with anyone in the world to identify your account - this can be copied from metamask
 		- a single account can be used for any other network:
 		- multiple accounts can be created quite easily
 	+ public key: this and the private key are used to authorize the sending and receiving of transactions to your account
@@ -231,7 +231,6 @@
 	- contains the data property: compiled bytecode of the contract.
 	- the value property is irrelevant, since no currency is being sent.
 
-
 ### SOLIDITY:
 
 - Used to develop smart contracts
@@ -264,6 +263,14 @@
 			- This allows us to test returned data, by analysing the INSTANCES created on the test network.
 			- We can also test the function callbacks to retreive data from the smart contract.
 			- We can also check the TRANSACTION OBJECT with each instance, by clicking on the details button within the console.
+- Can be used to interact with deployed contracts by connecting to the Rinkeby network with an account mnemonic.
+	- Click on the Run tab.
+	- Select the Injected Web3 environment - this environment is automatically generated into the remix tool from the metamask extension.
+	- Any transaction we create will cost some ether, which will prompt a metamask popup confirming the transaction payment.
+	- We can load our contract on the Rinkeby network by filling out the `At Address` field with our deployed contract's address.
+		- Once loaded, the message call returns our set message string.
+		- When we make a send request, (changing the message via setMessage) we get prompted by metamask to approve the transaction.
+			- this shows the amount, gas limit, gas price, transaction fee, and max total properties of the transaction.
 
 ## CONTRACT DEPLOYMENT - V0.2
 
@@ -321,3 +328,37 @@
 	- from, 
 	- gasPrice, 
 	- gas
+
+### Infura deployment to a live ethereum network
+
+- Difference of local vs live contract deployment:
+	- locally, our accounts are unlocked so they have no private / public key
+		- With ganache (local testing) we only need to set up a provider, then we are connected via web3.
+	- Live process:
+		- We use a Web3 instance to facilitate the deployment process
+		- Just as with ganache, we are given a provider from the Infura API, which hooks up with web3,
+		connecting us to ther server.
+		- However this time we need to provide an account mnemonic to connect to the network
+			- This account MUST contain an ammount of ether, in order to send transactions to the server.
+		- We can use our account created on metamask, by using the saved mnemonic
+		- Connecting to the network, (in this case the Rinkby test network):
+			- Usually we would set up our own local node, which would then sit on the Rinkeby network live.
+				- This process is complicated, and we will be skipping it in the course.
+			- Instead we will connect to an INFURA node.
+				- This API gives us the ability to connect to a node already on the network.
+				- Think of this API as a portal to the Rinkeby test network, to deploy our own contracts.
+		- Creating infura.io account:
+			- https://infura.io/signup
+
+### Truffle wallet provider:
+
+- We have to set up our provider manually, since we are no longer using the ganache network.
+- To set up the provider manually, we install the truffle-hdwallet-provider package
+
+### Etherscan:
+
+- Scan contract activity, and transactions here:
+	- https://etherscan.io/ - main network
+	- https://rinkeby.etherscan.io/ - rinkeby network
+	- There is a scanner for most main networks, super useful
+	- This shows our contract instance allowing us to check age, from, to, value, fee, etc
