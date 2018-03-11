@@ -4,7 +4,7 @@
   "description": "smart contract deployment boilerplate with javascript, solidity, and mocha",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "author": "Daniel Escobar",
   "license": "ISC",

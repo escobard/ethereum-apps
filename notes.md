@@ -290,6 +290,7 @@
 	- this tests contract deployment instances, and functionality
 		- For windows, users need to install the following global dependency:
 			`npm install --global --production windows-build-tools`
+- We will be using the ganache test ether network to deploy our tests 
 
 ### WEB3
 
@@ -303,4 +304,7 @@
 		- we are using v1
 - A provider must be set up with web3 to communicate with an ethereum network.
 	- this allows us to send a request to the network (in v0.2's case, the ganache test network)
+		- ganache creates accounts automatically for us, and they are unlocked accounts.
+		- unlocked accounts to not need a private or public key to send / receive transactions.
+		- mostly encountered in testing environments
 	- which returns a response back to web3, which we then use within our application
