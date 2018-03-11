@@ -12,16 +12,20 @@ const Web3 = require('web3')
 // in other words, this provider can be changed to any other network we want to connect to
 const web3 = new Web3(ganache.provider())
 
-beforeEach(() =>{
+let accounts;
+
+beforeEach(async () =>{
 
 	// grab our list of all accounts, from our Web3 instance - all of these are async in nature
 	// web3 can connect to several other crypto networks, in our case we connect to the .eth() method
 	// the .getAccounts() callback returns all accounts within our ether account
+	/* refactored to use es7 async / awwait
 	web3.eth.getAccounts()
 		.then(fetchedAccounts =>{
-			console.log(fetchedAccounts)
-	})
-	
+			
+	}) */
+	accounts = await web3.eth.getAccounts();
+	console.log(accounts)
 	// use one of those accounts to deploy the contract
 })
 
