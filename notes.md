@@ -126,7 +126,34 @@
 
 ### GAS:
 
-- 
+- In a nutshell, the GAS SYSTEM is meant to measure how much work we are executing with our code.
+- Think of this as a HOSTING FEE - is hosting free? No! We have to pay a fee.
+- Any time a smart contract is executed on an ethereum network, there is a GAS PRICE attached to it.
+- some applications start getting too expensive.
+	- remember that whoever is creating the transaction is the one that has to pay the gas price.
+- There is a list somewhere displaying the GAS cost for each operation type, try to find that later.
+	- GAS PRICE:
+		- The ammount of currency we are offering per transaction to handle gas used - usually in wei.
+		- Ammount of currency we are offering per unit of gas.
+			- For example:
+				- If I am willing to set gasPrice to 10, we would then multiply 10 by the total gas used for the entire contract.
+				- Say we are doing an addition operation (uses 3 gas, need to find a table with the gas cost prices), if we are paying 10 we, then we would pay a total of 30 wei for that function ALONE.
+				- The GAS COST is the TOTAL amount of gas paid at the end of the transaction.
+				- gas price x gas used = gas cost OR 10 wei x 3 = 30 wei in this case.
+	- startGas / gasLimit: 
+		- Represents the max units of gas that the transaction can consume.
+			- we are willing to pay AT MOST the set units of gas to run this contract.
+		- It's difficult to calculate the gas consumed in situations when a loop is utilized.
+			- if the gas limit is set to LOWER than the required ammount of gas to run the contract, the contract will stop running as shown in the following example:
+			- gasLimit: 10
+				- ADD - 3 gas
+				- SUBTRACT - 3 gas
+				------------------- the operation would stop right here since the gasLimit is set to 10
+				------------------- 3 + 3 = 6, adding the MULTIPLY function to the chain would set the
+				------------------- gas cost to 11, so the contract stops on the SUBTRACT function
+				- MULTIPLY - 5 gas
+				- EQ - 3 gas 
+				- TOTAL = 14 gas 
 
 ### SMART CONTRACTS:
 
