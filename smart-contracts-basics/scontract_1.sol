@@ -14,13 +14,5 @@ contract Inbox{
 	function setMessage(string newMessage) public {
 		message = newMessage;
 	}
-
-	// new function just to test out the GAS PRICE
-	function doMath(int a, int b){
-		a + b; 
-		b - a;
-		a * b;
-		a == 0;
-	}
-
+	
 }

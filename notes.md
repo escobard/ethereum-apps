@@ -155,6 +155,32 @@
 				- EQ - 3 gas 
 				- TOTAL = 14 gas 
 
+### 12 word Mnemonic - mnemonic is a series of easy to memorize words:
+
+- a series of 12 random words, used to encrypt your account data
+- this 12 word mnemonic can be decrypted by the BIP39 mnemonic algorithm:
+	- This stores the public key, private key, and account address for MULTIPLE accounts.
+	- For multiple account storage, this is a fairly secure tactic
+	- METAMASK uses this data structure to generate accounts.
+- Creating a new password, after initially installing METAMASK creates a new MMNEOMNIC ALGORITHM:
+	- this is used to securely store a list of accounts which we can use.
+	- as soon as the VAULT is created, we are given 12 words which we can use to generate our mnemonic again.
+- we can use this tool to see how mnemonic account chains are created: https://iancoleman.io/bip39/
+	- we can paste our mnmonic into the bip39 field, to generate our account data
+	- at the bottom, we have a list of derived addresses.
+	- this is a fairly effective way to recover your accounts
+
+### Getting more ether
+
+- Go to https://faucet.rinkeby.io/
+	- The easiest way to request ether is with google+ using the following instructions:
+		1) sign in to google plus - https://plus.google.com/
+		2) make sure you are on the home tab
+		3) add a post (little red pencil bottom right)
+		4) paste only your ether account address as the content, make sure post is public.
+		5) click on the post, then copy the URL to the rinkeby faucet
+		6) your account is credited with the specified ammount
+
 ### SMART CONTRACTS:
 
 - Think of a Smart contract as an account, like the one created on MetaMask.
