@@ -231,7 +231,6 @@
 	- contains the data property: compiled bytecode of the contract.
 	- the value property is irrelevant, since no currency is being sent.
 
-
 ### SOLIDITY:
 
 - Used to develop smart contracts
@@ -321,3 +320,29 @@
 	- from, 
 	- gasPrice, 
 	- gas
+
+### Infura deployment to a live ethereum network
+
+- Difference of local vs live contract deployment:
+	- locally, our accounts are unlocked so they have no private / public key
+		- With ganache (local testing) we only need to set up a provider, then we are connected via web3.
+	- Live process:
+		- We use a Web3 instance to facilitate the deployment process
+		- Just as with ganache, we are given a provider from the Infura API, which hooks up with web3,
+		connecting us to ther server.
+		- However this time we need to provide an account mnemonic to connect to the network
+			- This account MUST contain an ammount of ether, in order to send transactions to the server.
+		- We can use our account created on metamask, by using the saved mnemonic
+		- Connecting to the network, (in this case the Rinkby test network):
+			- Usually we would set up our own local node, which would then sit on the Rinkeby network live.
+				- This process is complicated, and we will be skipping it in the course.
+			- Instead we will connect to an INFURA node.
+				- This API gives us the ability to connect to a node already on the network.
+				- Think of this API as a portal to the Rinkeby test network, to deploy our own contracts.
+		- Creating infura.io account:
+			- https://infura.io/signup
+
+### Truffle wallet provider:
+
+- We have to set up our provider manually, since we are no longer using the ganache network.
+- To set up the provider manually, we install the truffle-hdwallet-provider package
