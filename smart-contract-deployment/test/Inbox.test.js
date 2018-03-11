@@ -14,6 +14,7 @@ const web3 = new Web3(ganache.provider())
 
 // this returns the two objects we want to deploy the contract
 const { interface, bytecode } = require('../compile')
+const { INITIAL_STRING } = require('./constants')
 
 let accounts, inbox;
 
@@ -28,7 +29,7 @@ beforeEach(async () =>{
 			
 	}) */
 	accounts = await web3.eth.getAccounts();
-	console.log(accounts)
+	// console.log(accounts)
 
 	// use one of those accounts to deploy the contract
 
@@ -60,7 +61,7 @@ beforeEach(async () =>{
 
 				// this sets the arguments for the smart contract - this is for the message string
 				// that the Inbox() constructor function expects on /contracts/Inbox.sol
-				arguments:['Hi There!']
+				arguments:[INITIAL_STRING]
 			})
 
 			// this actually sends the contract to the network
@@ -90,5 +91,27 @@ describe('Inbox', () =>{
 		// if it exists
 		.ok(inbox.options.address)
 
+	})
+	it("checks intial message to equal 'Hi there!'", async () =>{
+
+		let message = 
+
+			// this is the instance of our contract
+			await inbox
+
+			// this is the methods object, console logged on line 85
+			.methods
+
+			// this is the message function within our contract
+			.message()
+
+			// simply referencing the message function is not enough, we also attach the call()
+			// method to actually return the function
+
+			// defines how the function gets called, remember there are two kinds of functions
+			// call and send, which changes the data
+			.call()
+		assert.equal(message, INITIAL_STRING)
+		console.log('inbox methods message', inbox.methods.message)
 	})
 })
