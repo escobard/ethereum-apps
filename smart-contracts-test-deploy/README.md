@@ -18,6 +18,8 @@ $ npm install
 
 ### Testing
 
+This will test the methods, and options property of the contract instance.
+
 To test network connection, initial message, and changing message functions run the following command:
 
 ```
@@ -30,6 +32,12 @@ Before even deploying the smart contract to the network, we must sign up to seve
 
 1) Metamask - install the extension, create your account mneumonic: https://metamask.io/
 2) Get ether - go to https://faucet.rinkeby.io/ - instructions on how to most easily claim ether within (the notes file, like 175)[https://github.com/escobard/ethereum-apps/blob/master/notes.md]
-3) Sign up to Infura - https://infura.io/signup
+3) Sign up to Infura - https://infura.io/signup - grab the network URI for Rinkeby, or to any other network you want to deploy to.
+4) Set your account mnemonic and network URI within /constants/config.js (instructions on /constants/config.sample.js)
+5) Open up a terminal, navigate to this directory and run the following command
 
-Additionally, this will the methods, and options property of the contract instance.
+```
+$ node deploy
+```
+
+6) Watch your terminal for confirmation logs of network connection and contract deployment.
