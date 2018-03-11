@@ -1,4 +1,4 @@
-## ETHER BASICS
+## ETHER BASICS - V0.1
 
 **_These notes may not be 100% accurate yet, and will be updated as my understanding of the tech. stack grows_**
 
@@ -264,3 +264,22 @@
 			- This allows us to test returned data, by analysing the INSTANCES created on the test network.
 			- We can also test the function callbacks to retreive data from the smart contract.
 			- We can also check the TRANSACTION OBJECT with each instance, by clicking on the details button within the console.
+
+## CONTRACT DEPLOYMENT - V0.2
+
+- How do we deploy our contract to the network?
+	- Several options- but all have the following problems:
+		- Undergoing rapid development
+		- Some things don't work well
+		- Some things don't work at all
+		- Stuff breaks - patience is required
+		- Truffle - most popular:
+			- One stop shop for development of etherium contracts, boilerplate contains:
+				- contract creation
+				- local testing
+				- deployment
+	- To solve this problem, we are going to create our own custom node boilerplate to allow:
+		- contract creation - set up solidity compiler to build our contracts.
+			- this allows us to generate the BYTE code necessary to deploy, and the code necessary to interact on the front end with JS
+		- local testing - set up mocha tester runner to test solidity code.
+		- deployment - set up deploy script to compile + deploy our contract.
