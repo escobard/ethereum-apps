@@ -40,4 +40,17 @@ Before even deploying the smart contract to the network, we must sign up to seve
 $ node deploy
 ```
 
-6) Watch your terminal for confirmation logs of network connection and contract deployment.
+6) Watch your terminal for confirmation logs of network connection and contract deployment addresses.
+7) We can also keep track of our contract on the Rinkeby network by going to:
+	- https://rinkeby.etherscan.io/
+	- paste the outputted deployment address on step 6 into the search bar to view your deployed contract
+8) We can then manipulate our contract with Remix, by doing the following:
+	- Click on the Run tab.
+	- Select the Injected Web3 environment - this environment is automatically generated into the remix tool from the metamask extension.
+	- Any transaction we create will cost some ether, which will prompt a metamask popup confirming the transaction payment.
+	- We can load our contract on the Rinkeby network by filling out the `At Address` field with our deployed contract's address.
+		- Once loaded, the message call returns our set message string.
+		- When we make a send request, (changing the message via setMessage) we get prompted by metamask to approve the transaction.
+			- this shows the amount, gas limit, gas price, transaction fee, and max total properties of the transaction.
+			- once approved, the transaction object is returned after some time and returns the object within the console.
+9) Have fun!

@@ -263,6 +263,14 @@
 			- This allows us to test returned data, by analysing the INSTANCES created on the test network.
 			- We can also test the function callbacks to retreive data from the smart contract.
 			- We can also check the TRANSACTION OBJECT with each instance, by clicking on the details button within the console.
+- Can be used to interact with deployed contracts by connecting to the Rinkeby network with an account mnemonic.
+	- Click on the Run tab.
+	- Select the Injected Web3 environment - this environment is automatically generated into the remix tool from the metamask extension.
+	- Any transaction we create will cost some ether, which will prompt a metamask popup confirming the transaction payment.
+	- We can load our contract on the Rinkeby network by filling out the `At Address` field with our deployed contract's address.
+		- Once loaded, the message call returns our set message string.
+		- When we make a send request, (changing the message via setMessage) we get prompted by metamask to approve the transaction.
+			- this shows the amount, gas limit, gas price, transaction fee, and max total properties of the transaction.
 
 ## CONTRACT DEPLOYMENT - V0.2
 
@@ -346,3 +354,11 @@
 
 - We have to set up our provider manually, since we are no longer using the ganache network.
 - To set up the provider manually, we install the truffle-hdwallet-provider package
+
+### Etherscan:
+
+- Scan contract activity, and transactions here:
+	- https://etherscan.io/ - main network
+	- https://rinkeby.etherscan.io/ - rinkeby network
+	- There is a scanner for most main networks, super useful
+	- This shows our contract instance allowing us to check age, from, to, value, fee, etc

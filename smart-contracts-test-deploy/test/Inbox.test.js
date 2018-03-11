@@ -110,6 +110,7 @@ describe('Inbox', () => {
 
 			// defines how the function gets called, remember there are two kinds of functions
 			// call and send, which changes the data
+			// call is a read only operation, that costs nothing to perform
 			.call()
 		assert.equal(message, INITIAL_STRING)
 		console.log('inbox methods message', inbox.methods.message)
