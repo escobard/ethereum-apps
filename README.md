@@ -14,10 +14,7 @@ You may also clone this locally to your computer, using the following line of co
 $ git clone https://github.com/escobard/ethereum-apps.git
 ```
 
-To run the tests, ensure that your application is connected a MongoDB instance (expand on that later, instructions on local usage below):
-```
-$ installation instructions found within each application's folder
-```
+Usage instructions available within each application folder.
 
 ## Notes on blockchain, ethereum, smart contracts, solidity & other theory:
 

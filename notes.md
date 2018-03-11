@@ -17,8 +17,8 @@
 		- Block #
 		- Nounce: how many transactions sent 
 		- Data: whatever data the block contains, in most cases these are user transactions
-	- mining is essentially encrypting the block with calculations to encrypt the data the block contains.
-	- once a block has been MINED the hash of the block starts with 0000-1000 which indicates it has been SIGNED
+	- mining is essentially encrypting the block with calculations to called a proof of service which adds the block to a blockchain.
+	- once a block has been MINED the hash of the block starts with 0000-1000 which indicates it has been SIGNED by the proof of service algorythm.
 	- we refer to the amount of time it takes to HASH (SIGN / ENCRYPT) the BLOCK as BLOCK TIME
 
 - In comparison to BLOCKCHAIN:
@@ -26,15 +26,14 @@
 	- each block in the chain contains the HASH of the previous and current blocks in the blockchain
 	- this essentially forms a blockchain, a bunch of blocks containing data, with 2 hashes in each block, representing prev / current block in the chain.
 	- if the data in any block changes, it INVALIDATES that block and ANY blocks after it.
-	- this is how blockchains are SECURE, since tampering of ANY data in the chain changes the HASH, it can be immediately discerned where the data was manipulated by comparing the BLOCKCHAIN to other BLOCKCHAINS in the DISTRIBUTED BLOCKCHAIN NETWORK.
+	- this is how blockchains are SECURE, since tampering of ANY data in the chain changes the HASH, it can be immediately discerned where the data was manipulated by comparing the BLOCKCHAIN to other BLOCKCHAINS in the NODES within the DISTRIBUTED BLOCKCHAIN NETWORK.
 
 - In comparison to DISTRIBUTED BLOCKCHAIN:
-	-  a DISTRIBUTED BLOCKCHAIN is a network with several NODES, each NODE contains an exact copy of the blockchain.
+	- a DISTRIBUTED BLOCKCHAIN is a network with several NODES, each NODE contains an exact copy of the blockchain.
 	- in this scenario, each BLOCKCHAIN copy is tested to make sure all the hashes match across the board, further validating the blockchain.
-	- this ENSURES that the CURRENCY VALUE sent in each transaction is NOT changed, and if it does, its immediately discernable. This is the entire purpose of blockchains, to create a safe medium to secure transactions.
 
 - Each BLOCK contains BLOCK DATA or a list of TRANSACTIONS:
-	- The DATA within each BLOCK is multiple TRANSACTION OBJECTS - which are then MINED to get SIGNED, and then added to the BLOCKCHAIN
+	- The DATA within each BLOCK is usually multiple TRANSACTION OBJECTS - which are then MINED to get SIGNED by the proof of work algorythm, and then added to the BLOCKCHAIN
 	- basic block data contains only transaction objects, not balances which are handled by COINBASE blockchains.
 
 - With COINBASES TRANSACTIONS:
@@ -55,6 +54,7 @@
 			- This returns the VALUE of the hash, which can be between 0000-1000.
 			- The number is determined by the blockchain proof of work algo. which selects a target number.
 			- Once a solution has been determined, the block is considered as SIGNED, and added to the block chain.
+			- This is in a nutshell how ethereium proof of work signed blocks work.
 
 ### DIFFERENCES WITH BASIC BLOCKCHAIN AND ETHEREUM
 
@@ -66,13 +66,13 @@
 
 ### NETWORKS
 
-- Every network contains nodes, which a are managed by one or many users
-- There can be many networks, but there is only one main network which is where real monitery transactions take place
+- Every network contains nodes, which a are managed by one or many users.
+- There can be many networks, but there is only one main network which is where real monitery transactions take place.
 
 ### ETHER ACCOUNTS
 
 - Every account contains the following identifying pieces of data:
-	+ account address: like an email, which can be shared with anyone in the world to identify your account 	- this can be copied from metamask
+	+ account address: like an email, which can be shared with anyone in the world to identify your account - this can be copied from metamask
 		- a single account can be used for any other network:
 		- multiple accounts can be created quite easily
 	+ public key: this and the private key are used to authorize the sending and receiving of transactions to your account
