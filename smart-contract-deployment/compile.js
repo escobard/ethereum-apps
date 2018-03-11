@@ -36,7 +36,7 @@ const source = fs.readFileSync(
 /* 
 {contracts:{':Inbox':{
 	bytebode: 'series of random numbers with our compiled bytecode to deploy to any ether network',
-	interface: 'data that translates to javascript for us to utilize in applications'
+	interface: 'data that translates to javascript for us to utilize in applications - this is the ABI'
 }}}
 
 */
