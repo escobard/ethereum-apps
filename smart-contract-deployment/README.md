@@ -6,6 +6,18 @@ The purpose of this application is to provide a boilerplate for smart contract w
 	- local testing - set up mocha tester runner to test solidity code.
 	- deployment - set up deploy script to compile + deploy our contract.
 
-### Usage
+## Usage
 
 To be expanded on in the future
+
+### Installation
+
+```
+$ npm install
+```
+
+### Usage
+
+```
+
+```

@@ -12,8 +12,8 @@ const solc = require('solc')
 
 // sets the path for our inbox contract
 const inboxPath = path.resolve(
-	// _dirname takes us to the main project folder, in this gase /smart-contract-deployment
-	_dirname, 
+	// __dirname takes us to the main project folder, in this gase /smart-contract-deployment
+	__dirname, 
 
 	// first argument is the folder name
 	'contracts',
@@ -32,12 +32,26 @@ const source = fs.readFileSync(
 	'utf8')
 
 // this grabs the contract file specified in the source 
-solc.compile(
+// returns an object with our contract, in this case a the object looks like this:
+/* 
+{contracts:{':Inbox':{
+	bytebode: 'series of random numbers with our compiled bytecode to deploy to any ether network',
+	interface: 'data that translates to javascript for us to utilize in applications'
+}}}
+
+*/
+// solc.compile(
 
 	// this grabs the source solidity code, compiling it
-	source, 
+	// source, 
 
 	// this specifies the number of solidity smart contracts to compile, in our case just 1
-	1)
+	// 1)
 
-console.log(solc.compile(source, 1));
+	// this specifies the contract we want to grab, for reference on why we use this syntax go to line
+	// 37 where a placeholder object is shown
+	// .contracts[':Inbox']
+
+
+
+module.exports = solc.compile(source, 1).contracts[':Inbox']
