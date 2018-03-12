@@ -16,7 +16,7 @@ contract Lottery{
 
 
 	// converting the contract to an address object is necessary since this.balance is depracated
-	address con = address(this);
+	address contract = address(this);
 
 
 	// constructor function, invoked automatically on smart contract init
@@ -108,9 +108,10 @@ contract Lottery{
 		uint index = random() % players.length;
 
 		// ensures manager gets a 5% cut of the lottery profit
-		uint managerAward = con.balance/20;
+		uint managerAward = contract.balance/20;
 
-		// pays the manager
+		// pays the manager, also reduces the total like so:
+		// balance - managerAward = new balance;
 		manager.transfer( managerAward );
 
 		// selects the player within our players array
@@ -121,10 +122,12 @@ contract Lottery{
 		
 		.transfer(
 
+			// any amount transfered out of the contract.balance
+
 			// this grabs the balance from the contract
 			// the this. object can be used to reference to the scoped contract, just like in JS
 			// this.balance is depracted - refer to line 8-10
-			con.balance
+			contract.balance
 			)
 		;
 
