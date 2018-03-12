@@ -4,7 +4,7 @@ contract Lottery{
 
 	address public manager;
 	address[] public players;
-	address public contract = address(this);
+	address con = address(this);
 
 	function Lottery() public {
 		manager = msg.sender;
@@ -21,17 +21,12 @@ contract Lottery{
 	}
 
 	function pickWinner() public restricted {
-
+		uint balance = con.balance;
+		uint managerAward = balance/20;
 		uint index = random() % players.length;
-		
-		// ensures manager gets a 5% cut of the lottery profit
-		uint managerAward = contract.balance/20;
 
-		// pays the manager
-		manager.transfer( managerAward );
-		
-		players[index].transfer( contract.balance);
-
+		manager.transfer(managerAward);
+		players[index].transfer(balance);
 		players = new address[](0);
 	}
 
@@ -40,7 +35,7 @@ contract Lottery{
 	}
 
 	function getBalance() public view returns (uint){
-		return contract.balance;
+		return con.balance;
 	}
 
 	modifier restricted(){

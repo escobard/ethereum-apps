@@ -16,7 +16,7 @@ contract Lottery{
 
 
 	// converting the contract to an address object is necessary since this.balance is depracated
-	address contract = address(this);
+	address con = address(this);
 
 
 	// constructor function, invoked automatically on smart contract init
@@ -127,7 +127,7 @@ contract Lottery{
 			// this grabs the balance from the contract
 			// the this. object can be used to reference to the scoped contract, just like in JS
 			// this.balance is depracted - refer to line 8-10
-			contract.balance
+			con.balance
 			)
 		;
 

@@ -1,3 +1,7 @@
 vaults.txt
 test-deploy/node_modules
 test-deploy/constants/config.js
+lottery-app/backend/node_modules
+lottery-app/backend/constants/config.js
+lottery-app/frontend/node_modules
+lottery-app/frontend/constants/config.js
