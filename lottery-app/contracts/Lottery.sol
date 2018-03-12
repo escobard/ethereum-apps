@@ -87,4 +87,28 @@ contract Lottery{
 			);
 
 	}
+
+	function pickWinner() public{
+			
+		// the modulo function returns the remaining values multiplication.
+		// For example:
+		// 10 % 3 = 1 - this is true since 3x3 = 9, and the remaining value is 1
+		// 10 % 4 = 2 - this is true since 4x2 = 8, and the remaining value is 2
+		// to calculate randomness(ish) we use our random() returned number and our players.length() number to 
+		// select the winning player.
+		// random() % players.length() = winner
+		uint index = random() % players.length;
+
+		// selects the player within our players array
+		players[index]
+
+		// every address variable type stored in solidity has some attached functions
+		// to transfer money to any address, we use the .transfer() method
+		.transfer(
+			// this grabs the balance from the contract
+			// the this. object can be used to reference to the scoped contract, just like in JS
+			this.balance
+			)
+		;
+	}
 }
