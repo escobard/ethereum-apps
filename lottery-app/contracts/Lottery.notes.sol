@@ -14,6 +14,11 @@ contract Lottery{
 	// players is the identifier
 	address[] public players;
 
+
+	// converting the contract to an address object is necessary since this.balance is depracated
+	address con = address(this);
+
+
 	// constructor function, invoked automatically on smart contract init
 	/* 
 	- The msg global variable - created with every transaction like a receipt, contains the following properties:
@@ -102,8 +107,11 @@ contract Lottery{
 		// random() % players.length() = winner
 		uint index = random() % players.length;
 
-		// converting the contract to an address object is necessary since this.balance is depracated
-		address con = address(this);
+		// ensures manager gets a 5% cut of the lottery profit
+		uint managerAward = con.balance/20;
+
+		// pays the manager
+		manager.transfer( managerAward );
 
 		// selects the player within our players array
 		players[index]
