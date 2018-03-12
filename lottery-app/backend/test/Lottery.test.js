@@ -24,6 +24,7 @@ describe('Lottery Contract', () => {
 	it('deploys a contract', () =>{
 		assert.ok(lottery.options.address)
 	})
+
 	it('allows one account to enter', async () =>{
 
 		await lottery.methods.enter().send(
@@ -50,11 +51,13 @@ describe('Lottery Contract', () => {
 
 		let players = await lottery.methods.getPlayers().call({ from: accounts[0]})
 
-		assert.ok(players.length >= 1)
+		
 
 		// equal() compares the first value, to make sure it matches the second value
+		assert.ok(players.length >= 1)
 		assert.equal(accounts[0], players[0])
 	})
+
 	it('allows multiple accounts to enter', async () =>{
 		await lottery.methods.enter()
 			.send( {from: accounts[0], value: web3.utils.toWei('0.2','ether') }
@@ -69,5 +72,27 @@ describe('Lottery Contract', () => {
 		let players = await lottery.methods.getPlayers().call({ from: accounts[0]})
 
 		assert.ok(players.length === 3)
+	})
+
+	it('requires a minimum amount, (>= 0.01) of ether to enter', async() =>{
+		
+		// this syntax allows you to do the following:
+		// attempt to run the code inside the try{} statement
+		try {
+			await lottery.methods.enter()
+				.send( {from: accounts[0], value: web3.utils.toWei('0.05','ether') }
+			);
+
+			// this ensures that the test fails if this doesn't throw an error
+			assert(false)
+		}
+
+		// if this code is executed with errors, an error is thrown 
+		catch(err){
+
+			// since we want this to throw an error due to the low ammount of sent ether
+			// we simply call the assert method here
+			assert(err)
+		}
 	})
 })
