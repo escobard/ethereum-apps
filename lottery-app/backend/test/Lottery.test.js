@@ -19,6 +19,9 @@ beforeEach(async () =>{
 
 })
 
-describe('Lottery', () => {
+describe('Lottery Contract', () => {
 
+	it('deploys a contract', () =>{
+		assert.ok(lottery.options.address)
+	})
 })
