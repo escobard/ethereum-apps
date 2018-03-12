@@ -268,6 +268,12 @@
 	- gas: amount of gas the current function invocation has available
 	- sender: address of the account that started the current function invocation
 	- value: amount of ether (in wei) that was sent along with the function invocation
+- Reference types - objects / arrays in solidity:
+	- with arrays, the CONSTRUCTOR FUNCTION that comes with the variable declaration does not return the entire array. This is a big gotcha of solidity.
+		- Instead, the constructure function callback will expect the index that we want to retreive in the array.
+	- fixed array: Array that contains a single type of element. Has an unchanging length.
+	- dynamic array: Array that contains a single type of element. Can change in size over time, these are a lot like the arrays we are used to in javascript.
+	- 
 
 ### REMIX: remix.ethereum.org
 
