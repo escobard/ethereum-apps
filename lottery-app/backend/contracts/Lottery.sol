@@ -21,12 +21,11 @@ contract Lottery{
 	}
 
 	function pickWinner() public restricted {
-		uint balance = con.balance;
-		uint managerAward = balance/20;
+		uint managerAward = con.balance/20;
 		uint index = random() % players.length;
 
 		manager.transfer(managerAward);
-		players[index].transfer(balance);
+		players[index].transfer(con.balance);
 		players = new address[](0);
 	}
 

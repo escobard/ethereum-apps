@@ -107,4 +107,62 @@ describe('Lottery Contract', () => {
 			assert(err)
 		}
 	})
+
+	it('sends money to the winner', async() =>{
+		await lottery.methods.enter()
+				.send( {from: accounts[0], value: web3.utils.toWei('2','ether') }
+		);
+
+		// finds init balance of manager account
+		const initialBalance = await web3.eth
+
+			// the .getBalance() method returns the balance of the selected account
+			.getBalance(accounts[0])
+
+		await lottery.methods.pickWinner().send({ from: accounts[0]})
+
+		const finalBalance = await web3.eth.getBalance(accounts[0])
+
+		// since each transaction costs gas, we can't expect an exact value of 2 to be returned to the account
+		// due to this, we do a loose comparison
+		const difference = finalBalance - initialBalance;
+
+		// this ensures that the difference between the two values is around 2 ether, but slightly less
+		// to compensate for the gas cost 
+		assert(difference > web3.utils.toWei('1.8', 'ether'))
+
+	})
+
+	it('sends money to the manager on winner selection', async() =>{
+		await lottery.methods.enter()
+				.send( {from: accounts[0], value: web3.utils.toWei('2','ether') }
+		);
+
+		await lottery.methods.enter()
+				.send( {from: accounts[1], value: web3.utils.toWei('2','ether') }
+		);
+
+		const initialBalance = await web3.eth.getBalance(accounts[0])
+
+		await lottery.methods.pickWinner().send({ from: accounts[0]})
+
+		const finalBalance = await web3.eth.getBalance(accounts[0])
+
+		// ensures the final balance is greater than the initial balance for the manager
+		assert.ok(finalBalance > initialBalance)
+
+	})
+
+	it('empties players array and balance after pick winner', async() =>{
+		await lottery.methods.pickWinner()
+				.send( {from: accounts[0], value: web3.utils.toWei('0.2','ether') }
+		);
+
+		let players = await lottery.methods.getPlayers().call({ from: accounts[0]})
+		const finalBalance = await web3.eth.getBalance(accounts[0])
+		
+		assert(players === 0)
+		assert(finalBalance === 0)
+
+	})
 })
