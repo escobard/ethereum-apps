@@ -130,6 +130,11 @@ contract Lottery{
 			(0);
 	}
 
+	// returns a list of players for our JS front end to use, remember that nested arrays do not translate well outside of solidity
+	function getPlayers() public view returns (address[]) {
+		return players;
+	}
+
 	// definetly not necessary here, but for future usability we are exploring the modifier function type
 	// this allows us to return a function, to use in several different locations instead of repeating code
 	modifier restricted(){
