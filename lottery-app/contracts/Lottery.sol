@@ -4,7 +4,7 @@ contract Lottery{
 
 	// sets our address variable and calls it manager, this will be the address of whoever
 	// deploys the contract
-	address public manager;   
+	address public manager;
 
 	// this is how we invoke our arrays in solidity - this is a dynamic array 
 	// that can only contain addresses
@@ -89,7 +89,10 @@ contract Lottery{
 	}
 
 	function pickWinner() public{
-			
+		// this will stop ANYONE but the manager from running our contract, to ensure that only the manager
+		// can run the pickWinner() function
+		require(msg.sender == manager);
+
 		// the modulo function returns the remaining values multiplication.
 		// For example:
 		// 10 % 3 = 1 - this is true since 3x3 = 9, and the remaining value is 1
@@ -99,16 +102,21 @@ contract Lottery{
 		// random() % players.length() = winner
 		uint index = random() % players.length;
 
+		// converting the contract to an address object is necessary since this.balance is depracated
+		address con = address(this);
+
 		// selects the player within our players array
 		players[index]
 
 		// every address variable type stored in solidity has some attached functions
 		// to transfer money to any address, we use the .transfer() method
+		
 		.transfer(
 
 			// this grabs the balance from the contract
 			// the this. object can be used to reference to the scoped contract, just like in JS
-			this.balance
+			// this.balance is depracted - refer to line 8-10
+			con.balance
 			)
 		;
 
