@@ -263,6 +263,11 @@
 - It's usually best to avoid using complex mathematical equations within smart contracts, since it COSTS MONEY to operate the transactions.
 	- smart contracts should always contain basic logic to store and interact with blockchain data.
 	- any complex functionality should be handled by JS server side
+- The msg global variable - created with every transaction, contains the following properties:
+	- data: the data field of the current transaction
+	- gas: amount of gas the current function invocation has available
+	- sender: address of the account that started the current function invocation
+	- value: amount of ether (in wei) that was sent along with the function invocation
 
 ### REMIX: remix.ethereum.org
 
