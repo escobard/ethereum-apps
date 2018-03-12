@@ -14,7 +14,10 @@ const deploy = async () => {
 	console.log('Attempting to deploy from account: ', accounts[0])
 
 	const result = await new web3.eth.Contract(JSON.parse(interface))
-		.deploy({data: bytecode, arguments: ['Hello!']})
+
+		// unlike our first contract, this contract takes no initial arguments
+		// so we remove the initial deploy argument
+		.deploy({data: bytecode})
 		.send({ from:accounts[0], gas:'1000000' })
 
 	console.log('Address of our instance: ', result.options.address)
