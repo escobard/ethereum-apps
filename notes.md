@@ -246,6 +246,23 @@
 			- The ABI is used to interface the Byte code used for the smart constract, to visually show data from the contract.
 - changing base smart contract machine code does NOT change already existing INSTANCES of the CLASS
 - we can use the remix online application to debug solidity code while writing it - remix.ethereum.org
+- Variable Types:
+	- string - sequence of characters - "Hi There"
+	- bool - true or false
+	- int - integer, positive or negative. has no decimal. - 0, 51923, -3000
+		- has variants such as int8, int16, int32, int256
+			- int 8 - -128 to 128
+			- int 16 - -32,768 to 32,767
+			- default is int265 which can contain huge numbers
+		- the larger the int type, the higher the cost for the variable storage.
+			- it's best to use int types to define how high the numbers can go 
+	- uint - unsigned integer positive number, has no decimal, can only be greater than 0, no negatives. 0, 20000
+		- has variants just like with int, but only in positive numbers
+	- fixed/ufixed: fixed point number. number with a decimals.
+	- address - accepts an address, which ties it to a constructor function which has methods to send money / request money from users.
+- It's usually best to avoid using complex mathematical equations within smart contracts, since it COSTS MONEY to operate the transactions.
+	- smart contracts should always contain basic logic to store and interact with blockchain data.
+	- any complex functionality should be handled by JS server side
 
 ### REMIX: remix.ethereum.org
 
@@ -297,7 +314,7 @@
 	- this tests contract deployment instances, and functionality
 		- For windows, users need to install the following global dependency:
 			`npm install --global --production windows-build-tools`
-- We will be using the ganache test ether network to deploy our tests 
+- We will be using the ganache test ether network to deploy our tests.
 
 ### WEB3
 
@@ -362,3 +379,23 @@
 	- https://rinkeby.etherscan.io/ - rinkeby network
 	- There is a scanner for most main networks, super useful
 	- This shows our contract instance allowing us to check age, from, to, value, fee, etc
+
+## Advanced Smart Contracts - v0.3
+
+### Lottery Contract:
+
+- Contains:
+	- Price Pool:
+		- Holds the total ammount the players are willing to gamble.
+		- Will write the contract to allow custom amount of ether, outside of the course.
+	- Players:
+		- Initially written for 2, but I will go outside of the course and allow for more than 2 players.
+	- Manager:
+		- A third party that tells the contract to pick a winner.
+- Architecture:
+	- Variables:
+		- Manager - address of person who created the contract.
+		- Players - array of addresses of people who have entered - as soon as they send money to the contract, they are entered into it.
+	- Functions:
+		- Enter - enters a player into the loterry (player's array) - players are entered by sending money to the contract, controlled by this function.
+		- pickWinner - Randomly picks a winner and sends them to the prize pool
