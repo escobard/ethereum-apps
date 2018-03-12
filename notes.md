@@ -273,7 +273,20 @@
 		- Instead, the constructure function callback will expect the index that we want to retreive in the array.
 	- fixed array: Array that contains a single type of element. Has an unchanging length.
 	- dynamic array: Array that contains a single type of element. Can change in size over time, these are a lot like the arrays we are used to in javascript.
-	- 
+	- mapping: Collection of key value pairs, like javascript objects, except all keys must be of the same type and all values must be of the same type.
+	- struct: Collection of key value pairs that can have different types, so exactly like javascript objects.
+	- Issue with nested dynamic arrays:
+		- arrays like the following:
+			```
+				const myArray = [
+					[1, 2, 3], 
+					[4, 5, 6]
+				]
+			```
+		- will not translate from solidity to JS in the current version of solidity.
+		- Unfortunately, solidity treats all `strings` as dynamic arrays, meaning we cannot transfer an array with strings, ei:
+			`const myArray=["test", "test"]`
+		- 
 
 ### REMIX: remix.ethereum.org
 
