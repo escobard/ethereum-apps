@@ -1,25 +1,55 @@
-## Basic not-payable smart contract - Solidity
+## Lottery Application
 
-The purpose of this smart contract is to create a simple transaction which expects a string and returns a string. 
+The purpose of this application is to allow users to enter a lottery with their etherium accounts.
 
+Expected functionality:
+	- First player to deploy the contract is assigned as the manager.
+	- Players can enter as many times as they want, and enter as much money as they want.
+	- Players must contribute an ammount greater than 0.1 to enter the lottery.
+	- Picks a random winner, sends 95% of the lottery balance to the winner.
+	- 5% of the lottery balance goes to the manager.
+	- Contract is reset and ready to accept new lottery after the pot has been emptied, with the same manager.
 
-### Usage
+Features include:
+	- Peer to peer transactions with ethereum.
+	- Deployment / compile helpers with solidity / web3.
+	- End to end testing with Mocha.
 
-To run this contract, paste the code within (this)[https://github.com/escobard/ethereum-apps/blob/master/smart-contracts-basics/scontract_1.sol] file to: http:remix.ethereum.org/#optimize=false&version=soljson-v0.4.21+commit.dfe3193c.js
+## Usage
+
+To be expanded on in the future
+
+### Installation
 
 ```
- 	1) Compile the smart contract.
-	2) Head to the run tab - extended description of this functionality within (nodes.md)[https://github.com/escobard/ethereum-apps/blob/master/notes.md]
-  	3) Expect 3 functions:
-		- Inbox() - constructor function, runs upon smart contract init.
-		- message - retreives a set message - throws an error if the setMessage() argument is empty
-		- setMessage() - sets the message for the transaction.
-	4) Set a STRING within the stringinitialMessage [Create] field - value MUST be a string, text must be surrounded by "" - "hi there" - as an example.
-	5) Click on 'CREATE'
-	6) Below, we can see an INSTANCE of the contract CLASS created.
-	7) Clicking on either the message or get message buttons displays the string set in step 4.
-	8) Within the console (gray area) we can view the transaction object.
-	9) Setting a new message within the setMessage field of an INSTANCE updates the message value.
-	10) To retreive the new message value from the INSTANCE, we click on the getMessage or message buttons.
-	11) Have fun!
+$ npm install
 ```
+
+### Testing
+
+This will test the methods, and options property of the contract instance.
+
+To test network connection, initial message, and changing message functions run the following command:
+
+```
+$ npm run test
+```
+
+### Deployment
+
+Before even deploying the smart contract to the network, we must sign up to several different API's:
+
+1) Metamask - install the extension, create your account mneumonic: https://metamask.io/
+2) Get ether - go to https://faucet.rinkeby.io/ - instructions on how to most easily claim ether within (the notes file, like 175)[https://github.com/escobard/ethereum-apps/blob/master/notes.md]
+3) Sign up to Infura - https://infura.io/signup - grab the network URI for Rinkeby, or to any other network you want to deploy to.
+4) Set your account mnemonic and network URI within /constants/config.js (instructions on /constants/config.sample.js)
+5) Open up a terminal, navigate to this directory and run the following command
+
+```
+$ node deploy
+```
+
+6) Watch your terminal for confirmation logs of network connection and contract deployment addresses.
+7) We can also keep track of our contract on the Rinkeby network by going to:
+	- https://rinkeby.etherscan.io/
+	- paste the outputted deployment address on step 6 into the search bar to view your deployed contract
