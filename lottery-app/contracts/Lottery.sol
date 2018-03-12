@@ -88,10 +88,10 @@ contract Lottery{
 
 	}
 
-	function pickWinner() public{
-		// this will stop ANYONE but the manager from running our contract, to ensure that only the manager
-		// can run the pickWinner() function
-		require(msg.sender == manager);
+	function pickWinner() public 
+
+		// this calls the restricted modifier, created on line 135-141
+		restricted {
 
 		// the modulo function returns the remaining values multiplication.
 		// For example:
@@ -128,5 +128,19 @@ contract Lottery{
 
 			// ensures that the initial length of the array is 0
 			(0);
+	}
+
+	// definetly not necessary here, but for future usability we are exploring the modifier function type
+	// this allows us to return a function, to use in several different locations instead of repeating code
+	modifier restricted(){
+
+		// this will stop ANYONE but the manager from running our contract, to ensure that only the manager
+		// can run the pickWinner() function
+		require(msg.sender == manager);
+
+		// the underscore here returns the entire function that the modifier is attached to AFTER the modification
+		// so for example, for the pickWinner function, once the require statement == true, lines 96-130
+		// will run
+		_;
 	}
 }
