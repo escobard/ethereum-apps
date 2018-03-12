@@ -12,7 +12,7 @@ contract Lottery{
 	// [] represents the array
 	// public is the priviledge
 	// players is the identifier
-	address[] public players
+	address[] public players;
 
 	// constructor function, invoked automatically on smart contract init
 	/* 
@@ -28,10 +28,26 @@ contract Lottery{
 		manager = msg.sender;
 	}
 
-	function enter() public {
+	function enter() public	
 
-		// anything that sends ether we use the payable function type 
+		// this defines the function as a transaction function that handles ether, and costs gas
 		payable {
-			players.push(msg.sender)
-		}
+
+			// require() expects a boolean, to equal true. if it does, the function runs
+			// if it doesn't, the function stops running and throws an error
+			
+			// require statements have no detailed error statements - they are a bit difficult to work with
+			require(
+
+				// - value: amount of ether (in wei) that was sent along with the msg function invocation
+				msg.value > 
+
+				// sets the ether minimum value expected in this transaction
+				.01 
+
+				// this sets the currency to ether - this is converted to wei within the smart contract
+				ether);
+
+			players.push(msg.sender);
+	}
 }
