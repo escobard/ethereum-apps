@@ -312,6 +312,9 @@
 		- Once loaded, the message call returns our set message string.
 		- When we make a send request, (changing the message via setMessage) we get prompted by metamask to approve the transaction.
 			- this shows the amount, gas limit, gas price, transaction fee, and max total properties of the transaction.
+- The Debugger tool:
+	- when a function FAILS click on the debugger tool within the console
+	- you can go step by step to see where the function failed, and diagnose any errors this way
 
 ## CONTRACT DEPLOYMENT - V0.2
 
