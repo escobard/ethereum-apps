@@ -105,10 +105,20 @@ contract Lottery{
 		// every address variable type stored in solidity has some attached functions
 		// to transfer money to any address, we use the .transfer() method
 		.transfer(
+
 			// this grabs the balance from the contract
 			// the this. object can be used to reference to the scoped contract, just like in JS
 			this.balance
 			)
 		;
+
+		// this resets our players array back to an empty array with the following syntax
+		players = new 
+
+			// creates a new address array
+			address[]
+
+			// ensures that the initial length of the array is 0
+			(0);
 	}
 }
