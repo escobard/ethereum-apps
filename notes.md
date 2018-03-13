@@ -414,7 +414,9 @@
 - Contains:
 	- Price Pool:
 		- Holds the total ammount the players are willing to gamble.
-		- Will write the contract to allow custom amount of ether, outside of the course.
+		- Additional goodies:
+			- Added extra logic to send 5% of the contract's balance to the manager / creator.
+			- Added extra logic to return the contract ammount.
 	- Players:
 		- Initially written for 2, but I will go outside of the course and allow for more than 2 players.
 	- Manager:
@@ -426,3 +428,26 @@
 	- Functions:
 		- Enter - enters a player into the loterry (player's array) - players are entered by sending money to the contract, controlled by this function.
 		- pickWinner - Randomly picks a winner and sends them to the prize pool
+
+## React Frontend - v0.4
+
+### traditional application architecture vs ethereum application architecture differences:
+
+- Traditional application architecture have the following structure:
+	- client
+	- server 
+		- data
+
+- Ethereum application structure:
+	- client:
+	- ethereum server.
+	- (optionally) server API:
+		- This could be where we manage user authentication, and other non blockchain related data retention.
+		- Remember that blockchain transactions are expensive, and should only be relied on for monitary transactions.
+- Ethereum application architecture use the blockchain's data retention for most data, but can rely on an API server for non blockchain related data.
+
+
+### Why React?
+
+- React makes handling asynchronous requests and the scalable fracturing of packages and components much easier.
+- This makes it easier to organize and structure applications on the front end, although not required.
