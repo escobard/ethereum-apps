@@ -1,4 +1,7 @@
 ## v0.45 - basic authentication and data retention with express / MongoDB
+	- This is not part of any course, rather an experimental addition of my own.
+		- I intend to apply some of the practices with this API in more advanced ether applications.
+		- In later versions, JWT should be scrapped for cookie authentication instead.
 	TODO:
 		- retains account data including a base account and password.
 			- stores users public key, balance, and previously donated ammount.
