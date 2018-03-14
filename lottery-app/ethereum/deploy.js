@@ -8,6 +8,7 @@ const provider = new HDWalletProvider( account, url )
 
 const web3 = new Web3(provider)
 
+// new changes to this deploy script to be executable from anywhere, returning the new contract
 const deploy = async () => {
 
 	const accounts = await web3.eth.getAccounts()
@@ -20,7 +21,11 @@ const deploy = async () => {
 		.deploy({data: bytecode})
 		.send({ from:accounts[0], gas:'1000000' })
 
+	console.log( 'Interface code: ', interface )
 	console.log('Address of our instance: ', result.options.address)
+	return result
 	
 }
 deploy()
+
+module.exports = deploy;

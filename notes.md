@@ -414,7 +414,9 @@
 - Contains:
 	- Price Pool:
 		- Holds the total ammount the players are willing to gamble.
-		- Will write the contract to allow custom amount of ether, outside of the course.
+		- Additional goodies:
+			- Added extra logic to send 5% of the contract's balance to the manager / creator.
+			- Added extra logic to return the contract ammount.
 	- Players:
 		- Initially written for 2, but I will go outside of the course and allow for more than 2 players.
 	- Manager:
@@ -426,3 +428,51 @@
 	- Functions:
 		- Enter - enters a player into the loterry (player's array) - players are entered by sending money to the contract, controlled by this function.
 		- pickWinner - Randomly picks a winner and sends them to the prize pool
+
+## React Frontend - v0.4
+
+### traditional application architecture vs ethereum application architecture differences:
+
+- Traditional application architecture have the following structure:
+	- client
+	- server 
+		- data
+
+- Ethereum application structure:
+	- client:
+	- ethereum server.
+	- (optionally) server API:
+		- This could be where we manage user authentication, and other non blockchain related data retention.
+		- Remember that blockchain transactions are expensive, and should only be relied on for monitary transactions.
+- Ethereum application architecture use the blockchain's data retention for most data, but can rely on an API server for non blockchain related data.
+
+
+### Why React?
+
+- React makes handling asynchronous requests and the scalable fracturing of packages and components much easier.
+- This makes it easier to organize and structure applications on the front end, although not required.
+
+### Metamask and the browser
+
+- For v0.4, we will be assuming that our user has metamask installed.
+	- For v0.45, I will attempt to create an ether account for the user in the server, with authentication.
+- While the metamask extension is running, the browser is automatically injected with a web3 instances. 
+	- This allows us to communicate with Metamask with web3 from the client side, very useful!
+	- This contains a provider (within metamask) that connects the user to some ethereum network.
+		- This is managed by the extension, and therefore the user.
+- This causes some issues, since we have a different version of web3 running in our application. 
+- However, the entire point of v0.45 is to have the ability to use the application with no ether account, or metamask installation for an improved user experience. 
+	- Tackle this problem on the next version, but at the very least we will have some login validation in place.
+- According to the instructor, we will not be relying on metamask on the last project, although I do not see how this works since the provided repo RELIES on metamask usage.
+
+
+### Faucet issues:
+
+- As of March 14th, 2018, there is no publically available faucet for the Rinkeby test network other than the main faucet.
+- This means that users MUST go through the social media process in order to receive ether for Rinkeby.
+	- This also means that automatically loading the user's test account with ether is currently impossible.
+	- The new aim of v0.45 is to simply create authenticated access with an API, which also creates an ether account on rinkeby.
+	- This will return the account number to the user, who must then go through the rinkeby process to fund their account.
+		- Definetly not ideal, but at the very least the API will have a semi working version.
+	- There should be two use cases, with metamask and without metamask.
+		- Without will initiate the entire auth process if present.

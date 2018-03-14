@@ -5,6 +5,7 @@ contract Lottery{
 	address public manager;
 	address[] public players;
 	address con = address(this);
+	address public winner;
 
 	function Lottery() public {
 		manager = msg.sender;
@@ -23,7 +24,7 @@ contract Lottery{
 	function pickWinner() public restricted {
 		uint managerAward = con.balance/20;
 		uint index = random() % players.length;
-
+		winner = players[index];
 		manager.transfer(managerAward);
 		players[index].transfer(con.balance);
 		players = new address[](0);
@@ -33,6 +34,8 @@ contract Lottery{
 		return players;
 	}
 
+	// this is actually obsolete, since we can use the web3.eth.getBalance() function to 
+	// retreive a contract's balance
 	function getBalance() public view returns (uint){
 		return con.balance;
 	}
