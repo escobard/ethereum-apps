@@ -34,6 +34,26 @@ class App extends Component {
 
   }
 
+  // again, this syntax binds the 'this' keyword into the function without needing to declare it 
+  // within the constructor
+  onSubmit = async (event) => {
+    
+    event.preventDefault();
+
+    // grabs the accounts from our metamask instance
+    const accounts = await web3.eth.getAccounts();
+
+    await lottery.methods.enter().send({
+      
+      // unlike our call() method, send() needs to have a from account specified
+      from: accounts[0],
+
+      // uses our web3 conversion util again
+      value: web3.utils.toWei(this.state.value, 'ether')
+    })
+
+  }
+
   render() {
     let { manager, players, balance, value } = this.state;
 
@@ -45,7 +65,7 @@ class App extends Component {
         <p>This contract is managed by {manager}</p>
         <p>There are currently {players.length ? players.length : players} people entered,
         competing to win {etherConvert} ether.</p>
-        <form action="">
+        <form onSubmit={this.onSubmit}>
           <h4>Want to try your luck?</h4>
           <div>
             <label htmlFor="">Amount of ether to enter</label>
