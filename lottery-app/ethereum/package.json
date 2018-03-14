@@ -4,7 +4,8 @@
   "description": "smart contract deployment boilerplate with javascript, solidity, and mocha",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "deploy": "node deploy.js"
   },
   "author": "Daniel Escobar",
   "license": "ISC",

@@ -29,6 +29,11 @@ More usage instructions on this application coming in the future.
 - (rinkby fawcet)(https://faucet.rinkeby.io/)
 - web3.js
 
+## Known bugs:
+
+- Installing the web3 version with npm install does not always install the correct package and may cause errors.
+	- To fix this, run the following command: `npm install web3@1.0.0-beta.26`
+
 ## Application breakdown
 
 To be expanded in the future...
