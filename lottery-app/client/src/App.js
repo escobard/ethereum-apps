@@ -65,17 +65,25 @@ class App extends Component {
   onClick = async () =>{
 
     // grabs provider accounts 
-    const accounts = await web3.eth.getAccounts()
+    const accounts = await web3.eth.getAccounts(), 
+
+    // grabs the balance prior to submit
+    balance = await web3.eth.getBalance( lottery.options.address )
 
     this.setState({message: "Waiting on new winner transaction..."})
+
 
     // sends a transaction with the pickWinner() method from the contract
     await lottery.methods.pickWinner().send({
       from: accounts[0]
     })
 
+    // grabs the winner's key
+    const winner = await lottery.methods.winner().call(),
+    convertBalance = web3.utils.fromWei(balance, 'ether')
+
     // we could further expand the FE to show who was picked
-    this.setState({message: "A winner has been picked!"})
+    this.setState({message: `${winner} has won ${convertBalance} ether!`})
   }
 
   render() {
