@@ -451,3 +451,16 @@
 
 - React makes handling asynchronous requests and the scalable fracturing of packages and components much easier.
 - This makes it easier to organize and structure applications on the front end, although not required.
+
+### Metamask and the browser
+
+- For v0.4, we will be assuming that our user has metamask installed.
+	- For v0.45, I will attempt to create an ether account for the user in the server, with authentication.
+- While the metamask extension is running, the browser is automatically injected with a web3 instances. 
+	- This allows us to communicate with Metamask with web3 from the client side, very useful!
+	- This contains a provider (within metamask) that connects the user to some ethereum network.
+		- This is managed by the extension, and therefore the user.
+- This causes some issues, since we have a different version of web3 running in our application. 
+- However, the entire point of v0.45 is to have the ability to use the application with no ether account, or metamask installation for an improved user experience. 
+	- Tackle this problem on the next version, but at the very least we will have some login validation in place.
+- According to the instructor, we will not be relying on metamask on the last project, although I do not see how this works since the provided repo RELIES on metamask usage.
