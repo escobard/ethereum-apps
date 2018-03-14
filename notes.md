@@ -464,3 +464,15 @@
 - However, the entire point of v0.45 is to have the ability to use the application with no ether account, or metamask installation for an improved user experience. 
 	- Tackle this problem on the next version, but at the very least we will have some login validation in place.
 - According to the instructor, we will not be relying on metamask on the last project, although I do not see how this works since the provided repo RELIES on metamask usage.
+
+
+### Faucet issues:
+
+- As of March 14th, 2018, there is no publically available faucet for the Rinkeby test network other than the main faucet.
+- This means that users MUST go through the social media process in order to receive ether for Rinkeby.
+	- This also means that automatically loading the user's test account with ether is currently impossible.
+	- The new aim of v0.45 is to simply create authenticated access with an API, which also creates an ether account on rinkeby.
+	- This will return the account number to the user, who must then go through the rinkeby process to fund their account.
+		- Definetly not ideal, but at the very least the API will have a semi working version.
+	- There should be two use cases, with metamask and without metamask.
+		- Without will initiate the entire auth process if present.

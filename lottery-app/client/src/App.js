@@ -10,9 +10,10 @@ class App extends Component {
   // with ES6 + babel, we can get rid of the constructor function entirely, with shorter syntax
   state = {
     manager: 'Loading manager...',
-    players: 'Loading players...',
+    players: '',
     balance: '',
-    value: ''
+    value: '',
+    message: ''
   };
 
   async componentDidMount(){
@@ -43,6 +44,8 @@ class App extends Component {
     // grabs the accounts from our metamask instance
     const accounts = await web3.eth.getAccounts();
 
+    this.setState({message: 'Waiting on transaction success...'})
+
     await lottery.methods.enter().send({
       
       // unlike our call() method, send() needs to have a from account specified
@@ -52,19 +55,44 @@ class App extends Component {
       value: web3.utils.toWei(this.state.value, 'ether')
     })
 
+
+    // the code here will NOT be run until after the await function is completed.
+    // this is a HUGE advantage of the async / await es7 syntax
+    this.setState({message: 'You have been entered'})
+
+  }
+
+  onClick = async () =>{
+
+    // grabs provider accounts 
+    const accounts = await web3.eth.getAccounts()
+
+    this.setState({message: "Waiting on new winner transaction..."})
+
+    // sends a transaction with the pickWinner() method from the contract
+    await lottery.methods.pickWinner().send({
+      from: accounts[0]
+    })
+
+    // we could further expand the FE to show who was picked
+    this.setState({message: "A winner has been picked!"})
   }
 
   render() {
-    let { manager, players, balance, value } = this.state;
+    let { manager, players, balance, value, message } = this.state;
 
     // converts the wei returned from the .getBalance() method to ether 
     let etherConvert = web3.utils.fromWei(balance, 'ether')
+
     return (
       <div className="App">
         <h2>Lottery Contract</h2>
         <p>This contract is managed by {manager}</p>
-        <p>There are currently {players.length ? players.length : players} people entered,
+        <p>There are currently {players.length ? players.length : '0'} people entered,
         competing to win {etherConvert} ether.</p>
+
+        <hr/>
+
         <form onSubmit={this.onSubmit}>
           <h4>Want to try your luck?</h4>
           <div>
@@ -77,6 +105,15 @@ class App extends Component {
           </div>
           <button>Enter</button>
         </form>
+
+        <hr/>
+
+          <h4>Ready to pick a winner? </h4>
+          <span>(anyone other than the manager clicking this will throw an error)</span>
+          <button onClick={this.onClick}>Pick a winner</button>
+        <hr/>
+
+        <h1>{message}</h1>
       </div>
     );
   }
