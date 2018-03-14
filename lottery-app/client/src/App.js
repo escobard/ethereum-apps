@@ -6,13 +6,11 @@ import web3 from "./web3";
 import lottery from "./lottery";
 
 class App extends Component {
-  constructor(props){
-    super(props)
 
-    this.state={
-      manager: 'Loading...'
-    }
-  }
+  // with ES6 + babel, we can get rid of the constructor function entirely, with shorter syntax
+  state = {
+    manager: 'Loading...'
+  };
 
   async componentDidMount(){
 
@@ -23,6 +21,7 @@ class App extends Component {
     this.setState({manager})
 
   }
+  
   render() {
     let { manager } = this.state
     return (
