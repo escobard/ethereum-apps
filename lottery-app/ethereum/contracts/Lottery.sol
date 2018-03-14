@@ -33,6 +33,8 @@ contract Lottery{
 		return players;
 	}
 
+	// this is actually obsolete, since we can use the web3.eth.getBalance() function to 
+	// retreive a contract's balance
 	function getBalance() public view returns (uint){
 		return con.balance;
 	}
