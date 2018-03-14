@@ -12,6 +12,7 @@ class App extends Component {
     manager: 'Loading manager...',
     players: 'Loading players...',
     balance: '',
+    value: ''
   };
 
   async componentDidMount(){
@@ -34,7 +35,7 @@ class App extends Component {
   }
 
   render() {
-    let { manager, players, balance } = this.state;
+    let { manager, players, balance, value } = this.state;
 
     // converts the wei returned from the .getBalance() method to ether 
     let etherConvert = web3.utils.fromWei(balance, 'ether')
@@ -44,6 +45,18 @@ class App extends Component {
         <p>This contract is managed by {manager}</p>
         <p>There are currently {players.length ? players.length : players} people entered,
         competing to win {etherConvert} ether.</p>
+        <form action="">
+          <h4>Want to try your luck?</h4>
+          <div>
+            <label htmlFor="">Amount of ether to enter</label>
+            <input 
+              type="text"
+              value={value}
+              onChange={event => this.setState({ value: event.target.value })}
+            />
+          </div>
+          <button>Enter</button>
+        </form>
       </div>
     );
   }
