@@ -22,6 +22,10 @@ Due to this, we will be relying on two libraries to utilize each project in this
 
 The API prototype being developed post v0.45 will focus on simply creating and storing ether accounts with web3/express/mongoDB which will work perfectly on the main ether network. Since with test accounts we want to have some ammount of Ether available after account creation, the API cannot utilize any public faucet without user interaction so the automatic funding of your Ether account will be implementing at a later date.
 
+## Demo
+
+Barebones demo can be found (here)[https://lottery-app-1990.herokuapp.com/]
+
 ## Installation & Usage
 
 To install and run this locally on your computer, you will need a local web to open the files in this repository with a text editor, or preview them on a browser.
