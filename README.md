@@ -24,7 +24,7 @@ The API prototype being developed post v0.45 will focus on simply creating and s
 
 ## Demo
 
-Barebones demo can be found (here)[https://lottery-app-1990.herokuapp.com/]
+Barebones demo can be found [here](https://lottery-app-1990.herokuapp.com)
 
 ## Installation & Usage
 
