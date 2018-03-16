@@ -476,3 +476,15 @@
 		- Definetly not ideal, but at the very least the API will have a semi working version.
 	- There should be two use cases, with metamask and without metamask.
 		- Without will initiate the entire auth process if present.
+
+### Heroku deployment
+
+The following commands work best within the CLIENT directory to launch the app:
+
+```
+heroku create lottery-app-1990 --buildpack heroku/nodejs
+git add .
+git commit -m "Start with create-react-app"
+git push heroku master
+heroku open
+```
