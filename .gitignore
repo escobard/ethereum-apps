@@ -6,4 +6,8 @@ lottery-app/ethereum/constants/config.js
 lottery-app/client/node_modules
 lottery-app/client/constants/config.js
 lottery-app/server/node_modules
-lottery-app/client/constants/config.js
+lottery-app/server/constants/config.js
+auth-ether/client/node_modules
+auth-ether/client/constants/config.js
+auth-ether/server/node_modules
+auth-ether/server/constants/config.js
