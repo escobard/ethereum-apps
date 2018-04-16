@@ -1,4 +1,13 @@
-## v0.45 - basic authentication and data retention with express / MongoDB
+## v0.5 - advanced solidity
+	TODO:
+		- create contract factories
+		- advanced function syntax
+		- array and object mapping
+		- storage & memory
+
+
+## v0.45 - basic authentication and data retention with express / MongoDB - SCRAPPED
+	- Will re-start when time permits
 	- This is not part of any course, rather an experimental addition of my own.
 		- I intend to apply some of the practices with this API in more advanced ether applications.
 		- In later versions, JWT should be scrapped for cookie authentication instead.
