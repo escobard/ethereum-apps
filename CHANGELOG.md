@@ -5,7 +5,6 @@
 		- array and object mapping
 		- storage & memory
 
-
 ## v0.45 - basic authentication and data retention with express / MongoDB - SCRAPPED
 	- Will re-start when time permits
 	- This is not part of any course, rather an experimental addition of my own.
